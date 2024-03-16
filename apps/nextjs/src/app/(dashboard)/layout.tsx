@@ -1,4 +1,4 @@
-import { Navbar } from "./navbar";
+import { Navbar } from "../_components/navbar";
 
 export default function Layout({
   children,
@@ -8,7 +8,7 @@ export default function Layout({
   return (
     <>
       <Navbar />
-      {children}
+      <div className="p-8">{children}</div>
     </>
   );
 }

@@ -1,19 +1,19 @@
 "use client";
 
-import { useEffect } from "react";
-import { IBM_Plex_Mono } from "next/font/google";
+// import { useEffect } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { cn } from "@ai-inbox/ui";
 import { Badge } from "@ai-inbox/ui/badge";
-import { useSession } from "next-auth/react";
+
+// import { useSession } from "next-auth/react";
 
 // import { UserButton } from "../_components/ui/user-button";
 // import { Search } from "./client";
 
 export function Navbar(): React.ReactElement {
   const pathname = usePathname();
-  const router = useRouter();
+  // const router = useRouter();
   // const session = useSession();
 
   // useEffect(() => {

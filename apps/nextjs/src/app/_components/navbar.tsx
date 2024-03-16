@@ -3,6 +3,7 @@
 // import { useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
 import { cn } from "@ai-inbox/ui";
 import { Badge } from "@ai-inbox/ui/badge";
 

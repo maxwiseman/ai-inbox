@@ -1,6 +1,7 @@
+import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
+
 import { appRouter, createTRPCContext } from "@ai-inbox/api";
 import { auth } from "@ai-inbox/auth";
-import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 
 export const runtime = "edge";
 

@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
+import { GeistMono } from "geist/font/mono";
+
 import { ThemeProvider } from "@ai-inbox/ui/theme";
 import { Toaster } from "@ai-inbox/ui/toast";
-import { GeistMono } from "geist/font/mono";
 
 // import { GeistSans } from "geist/font/sans";
 

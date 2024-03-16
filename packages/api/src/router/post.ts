@@ -1,6 +1,7 @@
+import { z } from "zod";
+
 import { db, desc, eq, schema } from "@ai-inbox/db";
 import { CreatePostSchema } from "@ai-inbox/validators";
-import { z } from "zod";
 
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 

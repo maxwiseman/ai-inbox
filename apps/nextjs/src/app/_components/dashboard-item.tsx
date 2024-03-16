@@ -1,5 +1,6 @@
-import { Button } from "@ai-inbox/ui/button";
 import { IconMail, IconNews, IconSettings } from "@tabler/icons-react";
+
+import { Button } from "@ai-inbox/ui/button";
 
 export function DashboardItem({ item }: { item: Item }): React.ReactElement {
   // eslint-disable-next-line react/jsx-no-useless-fragment -- i need it to be a react node

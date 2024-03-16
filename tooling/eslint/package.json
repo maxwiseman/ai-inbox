@@ -1,5 +1,5 @@
 {
-  "name": "@acme/eslint-config",
+  "name": "@ai-inbox/eslint-config",
   "version": "0.2.0",
   "private": true,
   "license": "MIT",
@@ -25,8 +25,8 @@
     "eslint-plugin-react-hooks": "^4.6.0"
   },
   "devDependencies": {
-    "@acme/prettier-config": "^0.1.0",
-    "@acme/tsconfig": "^0.1.0",
+    "@ai-inbox/prettier-config": "^0.1.0",
+    "@ai-inbox/tsconfig": "^0.1.0",
     "@types/eslint": "^8.56.5",
     "@vercel/style-guide": "^6.0.0",
     "eslint": "^8.57.0",
@@ -39,5 +39,5 @@
       "./base.js"
     ]
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@ai-inbox/prettier-config"
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@acme/auth-proxy",
+  "name": "@ai-inbox/auth-proxy",
   "private": true,
   "type": "module",
   "scripts": {
@@ -14,10 +14,10 @@
     "@auth/core": "0.27.0"
   },
   "devDependencies": {
-    "@acme/eslint-config": "^0.2.0",
-    "@acme/prettier-config": "^0.1.0",
-    "@acme/tailwind-config": "^0.1.0",
-    "@acme/tsconfig": "^0.1.0",
+    "@ai-inbox/eslint-config": "^0.2.0",
+    "@ai-inbox/prettier-config": "^0.1.0",
+    "@ai-inbox/tailwind-config": "^0.1.0",
+    "@ai-inbox/tsconfig": "^0.1.0",
     "@types/node": "^20.11.25",
     "eslint": "^8.57.0",
     "h3": "^1.11.1",
@@ -28,8 +28,8 @@
   "eslintConfig": {
     "root": true,
     "extends": [
-      "@acme/eslint-config/base"
+      "@ai-inbox/eslint-config/base"
     ]
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@ai-inbox/prettier-config"
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@acme/ui",
+  "name": "@ai-inbox/ui",
   "private": false,
   "version": "0.1.0",
   "type": "module",
@@ -108,10 +108,10 @@
     "vaul": "^0.9.0"
   },
   "devDependencies": {
-    "@acme/eslint-config": "^0.2.0",
-    "@acme/prettier-config": "^0.1.0",
-    "@acme/tailwind-config": "^0.1.0",
-    "@acme/tsconfig": "^0.1.0",
+    "@ai-inbox/eslint-config": "^0.2.0",
+    "@ai-inbox/prettier-config": "^0.1.0",
+    "@ai-inbox/tailwind-config": "^0.1.0",
+    "@ai-inbox/tsconfig": "^0.1.0",
     "@types/react": "^18.2.57",
     "eslint": "^8.57.0",
     "prettier": "^3.2.5",
@@ -127,9 +127,9 @@
   },
   "eslintConfig": {
     "extends": [
-      "@acme/eslint-config/base",
-      "@acme/eslint-config/react"
+      "@ai-inbox/eslint-config/base",
+      "@ai-inbox/eslint-config/react"
     ]
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@ai-inbox/prettier-config"
 }

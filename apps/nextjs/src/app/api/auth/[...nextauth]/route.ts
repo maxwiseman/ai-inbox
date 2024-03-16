@@ -1,8 +1,7 @@
 import type { NextRequest } from "next/server";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-
-import { GET as DEFAULT_GET, POST } from "@acme/auth";
+import { GET as DEFAULT_GET, POST } from "@ai-inbox/auth";
 
 export const runtime = "edge";
 

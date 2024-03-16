@@ -21,13 +21,13 @@
     "typecheck": "turbo typecheck"
   },
   "devDependencies": {
-    "@acme/prettier-config": "^0.1.0",
+    "@ai-inbox/prettier-config": "^0.1.0",
     "@turbo/gen": "^1.12.4",
     "prettier": "^3.2.5",
     "turbo": "^1.12.4",
     "typescript": "^5.3.3"
   },
-  "prettier": "@acme/prettier-config",
+  "prettier": "@ai-inbox/prettier-config",
   "packageManager": "bun@1.0.29",
   "workspaces": [
     "apps/*",

@@ -1,5 +1,5 @@
 {
-  "name": "@acme/nextjs",
+  "name": "@ai-inbox/nextjs",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -14,11 +14,11 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
-    "@acme/api": "^0.1.0",
-    "@acme/auth": "^0.1.0",
-    "@acme/db": "^0.1.0",
-    "@acme/ui": "^0.1.0",
-    "@acme/validators": "^0.1.0",
+    "@ai-inbox/api": "^0.1.0",
+    "@ai-inbox/auth": "^0.1.0",
+    "@ai-inbox/db": "^0.1.0",
+    "@ai-inbox/ui": "^0.1.0",
+    "@ai-inbox/validators": "^0.1.0",
     "@t3-oss/env-nextjs": "^0.9.2",
     "@tabler/icons-react": "^3.1.0",
     "@tanstack/react-query": "^5.22.2",
@@ -33,10 +33,10 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@acme/eslint-config": "^0.2.0",
-    "@acme/prettier-config": "^0.1.0",
-    "@acme/tailwind-config": "^0.1.0",
-    "@acme/tsconfig": "^0.1.0",
+    "@ai-inbox/eslint-config": "^0.2.0",
+    "@ai-inbox/prettier-config": "^0.1.0",
+    "@ai-inbox/tailwind-config": "^0.1.0",
+    "@ai-inbox/tsconfig": "^0.1.0",
     "@types/node": "^20.11.25",
     "@types/react": "^18.2.57",
     "@types/react-dom": "^18.2.19",
@@ -50,10 +50,10 @@
   "eslintConfig": {
     "root": true,
     "extends": [
-      "@acme/eslint-config/base",
-      "@acme/eslint-config/nextjs",
-      "@acme/eslint-config/react"
+      "@ai-inbox/eslint-config/base",
+      "@ai-inbox/eslint-config/nextjs",
+      "@ai-inbox/eslint-config/react"
     ]
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@ai-inbox/prettier-config"
 }

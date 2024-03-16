@@ -1,13 +1,12 @@
 "use client";
 
+import type { AppRouter } from "@ai-inbox/api";
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // eslint-disable-next-line camelcase -- Nothing I can do about that
 import { loggerLink, unstable_httpBatchStreamLink } from "@trpc/client";
 import { createTRPCReact } from "@trpc/react-query";
 import SuperJSON from "superjson";
-
-import type { AppRouter } from "@acme/api";
 
 const createQueryClient = (): QueryClient => new QueryClient();
 

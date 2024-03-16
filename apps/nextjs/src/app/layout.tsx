@@ -1,33 +1,34 @@
 import type { Metadata, Viewport } from "next";
+import { cn } from "@ai-inbox/ui";
+import { ThemeProvider, ThemeToggle } from "@ai-inbox/ui/theme";
+import { Toaster } from "@ai-inbox/ui/toast";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
-
-import { cn } from "@acme/ui";
-import { ThemeProvider, ThemeToggle } from "@acme/ui/theme";
-import { Toaster } from "@acme/ui/toast";
 
 import { env } from "~/env";
 import { TRPCReactProvider } from "~/trpc/react";
 
 import "~/app/globals.css";
 
+import { IBM_Plex_Mono } from "next/font/google";
+
 export const metadata: Metadata = {
   metadataBase: new URL(
     env.VERCEL_ENV === "production"
-      ? "https://github.com/maxwiseman/turbo-template"
+      ? "https://inbox.maxwiseman.io"
       : "http://localhost:3000",
   ),
-  title: "Turbo Template",
-  description: "Simple monorepo with shared backend for web & mobile apps",
+  title: "AI Inbox",
+  description: "An AI powered inbox for your everything you need",
   openGraph: {
-    title: "Turbo Template",
-    description: "Simple monorepo with shared backend for web & mobile apps",
-    url: "https://github.com/maxwiseman/turbo-template",
-    siteName: "Turbo Template",
+    title: "AI Inbox",
+    description: "An AI powered inbox for your everything you need",
+    url: "https://github.com/maxwiseman/ai-inbox",
+    siteName: "AI Inbox",
   },
   twitter: {
     card: "summary_large_image",
-    site: "maxwiseman",
+    site: "AI Inbox",
     creator: "maxwiseman",
   },
 };
@@ -39,6 +40,11 @@ export const viewport: Viewport = {
   ],
 };
 
+const Mono = IBM_Plex_Mono({
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+});
+
 export default function RootLayout(props: {
   children: React.ReactNode;
 }): React.ReactElement {
@@ -46,16 +52,14 @@ export default function RootLayout(props: {
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans text-foreground antialiased",
-          GeistSans.variable,
-          GeistMono.variable,
+          "min-h-screen bg-background font-mono text-foreground antialiased",
+          // GeistSans.variable,
+          // GeistMono.variable,
+          Mono.className,
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <TRPCReactProvider>{props.children}</TRPCReactProvider>
-          <div className="fixed bottom-4 right-4">
-            <ThemeToggle />
-          </div>
           <Toaster />
         </ThemeProvider>
       </body>

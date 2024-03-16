@@ -1,7 +1,6 @@
+import { auth, signIn, signOut } from "@ai-inbox/auth";
+import { Button } from "@ai-inbox/ui/button";
 import { IconBrandDiscord } from "@tabler/icons-react";
-
-import { auth, signIn, signOut } from "@acme/auth";
-import { Button } from "@acme/ui/button";
 
 export async function AuthShowcase(): Promise<React.ReactElement> {
   const session = await auth();

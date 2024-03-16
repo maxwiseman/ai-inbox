@@ -1,10 +1,8 @@
 "use client";
 
 import { use } from "react";
-import { IconTrash } from "@tabler/icons-react";
-
-import { Button } from "@acme/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@acme/ui/card";
+import { Button } from "@ai-inbox/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@ai-inbox/ui/card";
 import {
   Form,
   FormControl,
@@ -12,12 +10,13 @@ import {
   FormItem,
   FormMessage,
   useForm,
-} from "@acme/ui/form";
-import { Input } from "@acme/ui/input";
-import { Skeleton } from "@acme/ui/skeleton";
-import { Textarea } from "@acme/ui/textarea";
-import { toast } from "@acme/ui/toast";
-import { CreatePostSchema } from "@acme/validators";
+} from "@ai-inbox/ui/form";
+import { Input } from "@ai-inbox/ui/input";
+import { Skeleton } from "@ai-inbox/ui/skeleton";
+import { Textarea } from "@ai-inbox/ui/textarea";
+import { toast } from "@ai-inbox/ui/toast";
+import { CreatePostSchema } from "@ai-inbox/validators";
+import { IconTrash } from "@tabler/icons-react";
 
 import { api } from "~/trpc/react";
 

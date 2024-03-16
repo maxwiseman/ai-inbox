@@ -1,5 +1,5 @@
 {
-  "name": "@acme/expo",
+  "name": "@ai-inbox/expo",
   "version": "0.1.0",
   "private": true,
   "main": "expo-router/entry",
@@ -39,11 +39,11 @@
     "superjson": "2.2.1"
   },
   "devDependencies": {
-    "@acme/api": "^0.1.0",
-    "@acme/eslint-config": "^0.2.0",
-    "@acme/prettier-config": "^0.1.0",
-    "@acme/tailwind-config": "^0.1.0",
-    "@acme/tsconfig": "^0.1.0",
+    "@ai-inbox/api": "^0.1.0",
+    "@ai-inbox/eslint-config": "^0.2.0",
+    "@ai-inbox/prettier-config": "^0.1.0",
+    "@ai-inbox/tailwind-config": "^0.1.0",
+    "@ai-inbox/tsconfig": "^0.1.0",
     "@babel/core": "^7.23.9",
     "@babel/preset-env": "^7.23.9",
     "@babel/runtime": "^7.23.9",
@@ -57,12 +57,12 @@
   "eslintConfig": {
     "root": true,
     "extends": [
-      "@acme/eslint-config/base",
-      "@acme/eslint-config/react"
+      "@ai-inbox/eslint-config/base",
+      "@ai-inbox/eslint-config/react"
     ],
     "ignorePatterns": [
       "expo-plugins/**"
     ]
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@ai-inbox/prettier-config"
 }

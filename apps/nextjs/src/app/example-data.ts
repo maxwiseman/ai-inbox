@@ -49,4 +49,12 @@ export const exampleData: Item[] = [
     id: "6",
     url: "https://www.macrumors.com/guide/iphone-14-vs-iphone-16/",
   },
+  {
+    title: "M3 MacBook Pro vs Air",
+    description:
+      "Apple's MacBook lineup was overhauled with the M3 MacBook Air models arriving in March 2024 and the latest MacBook Pro laptops coming with M3, M3 Pro, and M3 Max chips at the end of 2023. Join along for our in-depth look at MacBook Pro vs Air to see what's similar and different and a buyer's guide to help you make the best choice.",
+    type: "news",
+    id: "7",
+    url: "https://9to5mac.com/2024/03/15/macbook-pro-vs-air/",
+  },
 ];

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { extract } from "@extractus/article-extractor";
 
 import { AspectRatio } from "@ai-inbox/ui/aspect-ratio";
+import { Separator } from "@ai-inbox/ui/separator";
 
 import type { Item } from "../dashboard-item";
 
@@ -23,7 +24,7 @@ export async function NewsArticle({
 
   return (
     <div className="flex justify-center">
-      <div className="typography max-w-prose p-8">
+      <div className="max-w-prose p-8">
         {extractedData?.image ? (
           <AspectRatio
             className="mb-4 animate-pulse overflow-hidden rounded-lg bg-primary/10 bg-cover bg-center bg-no-repeat"
@@ -31,10 +32,51 @@ export async function NewsArticle({
             ratio={16 / 9}
           />
         ) : null}
-        <Link className="!no-underline" href={extractedData?.url ?? ""}>
-          <h1>{extractedData?.title}</h1>
-        </Link>
+        <div className="flex flex-col text-lg text-muted-foreground">
+          <Link
+            className="mb-2 scroll-m-20 text-4xl font-extrabold tracking-tight text-primary !no-underline"
+            href={extractedData?.url ?? ""}
+          >
+            <h1>{extractedData?.title}</h1>
+          </Link>
+          {extractedData?.ttr ? (
+            <div>
+              <strong>{Math.floor(extractedData.ttr / 60)} minute</strong> read
+              {extractedData.author &&
+              !extractedData.author.includes("http") ? (
+                <>
+                  {" "}
+                  by <strong>{extractedData.author ?? "unknown author"}</strong>
+                </>
+              ) : null}
+            </div>
+          ) : (
+            <div>
+              By <strong>{extractedData?.author ?? "unknown author"}</strong>
+            </div>
+          )}
+          {extractedData?.published ? (
+            <div>
+              Published{" "}
+              <strong>
+                {new Date(extractedData.published).toLocaleDateString()}
+              </strong>{" "}
+              {extractedData.source ? (
+                <>
+                  on{" "}
+                  <Link href={extractedData.url ?? ""}>
+                    <strong>
+                      {extractedData.source ?? "unknown media outlet"}
+                    </strong>
+                  </Link>
+                </>
+              ) : null}
+            </div>
+          ) : null}
+        </div>
+        <Separator className="my-4" />
         <div
+          className="typography "
           dangerouslySetInnerHTML={{
             __html: extractedData?.content ?? "",
           }}

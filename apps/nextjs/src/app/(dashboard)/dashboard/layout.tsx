@@ -1,13 +1,14 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@ai-inbox/ui/resizable";
 import { ScrollArea } from "@ai-inbox/ui/scroll-area";
-import { useMediaQuery } from "@uidotdev/usehooks";
 
 export default function Layout({
   children,
@@ -17,9 +18,16 @@ export default function Layout({
   details: React.ReactNode;
 }): React.ReactElement {
   const pathname = usePathname();
+  // const isMobile = useMediaQuery("(max-width: 640px)");
+  const [isMobile, setIsMobile] = useState(false);
 
-  if (useMediaQuery("(max-width: 750px)") && pathname.startsWith("/details"))
-    return <>{details}</>;
+  useEffect(() => {
+    if (window.innerWidth <= 750) {
+      setIsMobile(true);
+    }
+  }, []);
+
+  if (isMobile && pathname.startsWith("/details")) return <>{details}</>;
 
   return (
     <ResizablePanelGroup

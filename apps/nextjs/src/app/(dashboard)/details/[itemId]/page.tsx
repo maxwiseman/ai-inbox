@@ -5,11 +5,11 @@ import { Spinner } from "@ai-inbox/ui/spinner";
 import { NewsArticle } from "~/app/_components/details/news-article";
 import { exampleData } from "~/app/example-data";
 
-export function generateStaticParams(): { itemId: string }[] {
-  return exampleData.map((item) => ({
-    itemId: item.id,
-  }));
-}
+// export function generateStaticParams(): { itemId: string }[] {
+//   return exampleData.map((item) => ({
+//     itemId: item.id,
+//   }));
+// }
 
 export default async function Page({
   params,
@@ -20,18 +20,19 @@ export default async function Page({
     (item) => item.id === params.itemId,
   )[0];
 
-  if (articleData?.type === "news")
-    return (
-      <Suspense
-        fallback={
-          <div className="absolute inset-0 flex flex-row items-center justify-center gap-2 text-muted-foreground">
-            <Spinner />
-            Loading...
-          </div>
-        }
-      >
-        <NewsArticle item={articleData} />
-      </Suspense>
-    );
-  return <div>Article not found</div>;
+  return (
+    <Suspense
+      fallback={
+        <div className="absolute inset-0 flex flex-row items-center justify-center gap-2 text-muted-foreground">
+          <Spinner />
+          Loading...
+        </div>
+      }
+    >
+      <NewsArticle
+        url={params.itemId.replaceAll("%2F", "/").replaceAll("%3A", ":")}
+      />
+    </Suspense>
+  );
+  if (articleData?.type === "news") return <div>Article not found</div>;
 }

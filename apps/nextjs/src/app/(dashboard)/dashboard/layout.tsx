@@ -34,13 +34,11 @@ export default function Layout({
       direction="horizontal"
       className="max-h-[calc(100vh-3.5rem)]"
     >
-      <ResizablePanel defaultSize={pathname.startsWith("/details") ? 50 : 100}>
-        <ScrollArea
-          style={{
-            maskImage: `linear-gradient(#000,#000,transparent 0,#000 10px,#000 calc(100% - 10px),transparent)`,
-          }}
-          className="relative h-[calc(100vh-7rem)]"
-        >
+      <ResizablePanel
+        className="h-full"
+        defaultSize={pathname.startsWith("/details") ? 50 : 100}
+      >
+        <ScrollArea className="absolute h-[calc(100vh-3.5rem)]">
           {children}
         </ScrollArea>
       </ResizablePanel>

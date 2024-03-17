@@ -1,25 +1,16 @@
 import React from "react";
 import Link from "next/link";
-import { AspectRatio } from "@ai-inbox/ui/aspect-ratio";
-import { Separator } from "@ai-inbox/ui/separator";
 import { extractFromHtml } from "@extractus/article-extractor";
 
-import type { Item } from "../dashboard-item";
+import { AspectRatio } from "@ai-inbox/ui/aspect-ratio";
+import { Separator } from "@ai-inbox/ui/separator";
 
 export async function NewsArticle({
-  item,
+  url,
 }: {
-  item: Item;
+  url: string;
 }): Promise<React.ReactElement> {
-  if (item.type !== "news") {
-    return (
-      <div className="flex h-full w-full items-center justify-center text-muted-foreground">
-        Article not found!
-      </div>
-    );
-  }
-
-  const extractedHtml = await fetch(item.url, {
+  const extractedHtml = await fetch(url, {
     headers: {
       "User-Agent":
         "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",

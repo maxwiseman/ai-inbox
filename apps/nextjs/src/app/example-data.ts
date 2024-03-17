@@ -1,3 +1,5 @@
+import parse from "rss-to-json";
+
 import type { Item } from "./_components/dashboard-item";
 
 export const exampleData: Item[] = [
@@ -75,3 +77,53 @@ export const exampleData: Item[] = [
     url: "https://9to5mac.com/2024/03/15/macbook-pro-vs-air/",
   },
 ];
+
+export async function GetNytData(): Promise<Item[]> {
+  const rssData = (await parse(
+    "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+  )) as RssData;
+  return rssData.items.map((item) => ({
+    description: item.description,
+    id: item.id.replaceAll("/", "%2F").replaceAll(":", "%3A"),
+    title: item.title,
+    type: "news",
+    url: item.link,
+  }));
+}
+
+export interface RssData {
+  title: string;
+  description: string;
+  link: string;
+  image: string;
+  category: [];
+  items: {
+    id: string;
+    title: string;
+    description: string;
+    link: string;
+    author: string;
+    published: number | Date;
+    created: number | Date;
+    category: {
+      $text: string;
+      domain: string;
+    }[];
+    enclosures: {
+      height: string;
+      medium: string;
+      url: string;
+      width: string;
+    }[];
+    media: {
+      thumbnail:
+        | {
+            height: string;
+            medium: string;
+            url: string;
+            width: string;
+          }
+        | undefined;
+    };
+  }[];
+}

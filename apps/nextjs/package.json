@@ -28,6 +28,7 @@
     "@trpc/server": "11.0.0-next-beta.294",
     "geist": "^1.2.2",
     "next": "^14.1.0",
+    "node-fetch": "v2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "superjson": "2.2.1",

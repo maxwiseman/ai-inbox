@@ -1,9 +1,8 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { IconMail, IconNews, IconSettings } from "@tabler/icons-react";
-
 import { LinkButton } from "@ai-inbox/ui/button";
+import { IconMail, IconNews, IconSettings } from "@tabler/icons-react";
 
 export function DashboardItem({ item }: { item: Item }): React.ReactElement {
   // eslint-disable-next-line react/jsx-no-useless-fragment -- i need it to be a react node
@@ -29,7 +28,7 @@ export function DashboardItem({ item }: { item: Item }): React.ReactElement {
     >
       {icon}
       <span className="line-clamp-1 min-w-max">{item.title}</span>
-      <span className="line-clamp-1 text-wrap text-sm text-muted-foreground">
+      <span className="line-clamp-1 text-wrap text-left text-sm text-muted-foreground">
         {item.description}
       </span>
     </LinkButton>

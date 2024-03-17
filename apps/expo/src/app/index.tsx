@@ -18,16 +18,16 @@ function PostCard(props: {
           asChild
           href={{
             pathname: "/post/[id]",
-             
+
             params: { id: props.post.id },
           }}
         >
           <Pressable className="">
             <Text className=" text-xl font-semibold text-primary">
-              { }
+              {}
               {props.post.title}
             </Text>
-            { }
+            {}
             <Text className="mt-2 text-foreground">{props.post.content}</Text>
           </Pressable>
         </Link>
@@ -129,7 +129,6 @@ export default function Index(): React.ReactElement {
         </View>
 
         <FlashList
-           
           data={postQuery.data}
           estimatedItemSize={20}
           // eslint-disable-next-line react/no-unstable-nested-components -- this is all boilerplate

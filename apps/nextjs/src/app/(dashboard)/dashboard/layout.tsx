@@ -29,7 +29,9 @@ export default function Layout({
       </ResizablePanel>
       <ResizableHandle withHandle />
       <ResizablePanel>
-        <ScrollArea className="h-[calc(100vh-3rem)]">{details}</ScrollArea>
+        <ScrollArea className="relative h-[calc(100vh-3rem)]">
+          {details}
+        </ScrollArea>
       </ResizablePanel>
     </ResizablePanelGroup>
   );

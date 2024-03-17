@@ -41,4 +41,12 @@ export const exampleData: Item[] = [
     id: "5",
     url: "https://www.cbsnews.com/news/spacex-launch-super-heavy-starship-rocket-third-test-flight/",
   },
+  {
+    title: "iPhone 14 vs. iPhone 16",
+    description:
+      "After over a year of reports, there are now more than a dozen specific rumors about the features and improvements set to be offered by the two non-Pro iPhone 16 models later in 2024.",
+    type: "news",
+    id: "6",
+    url: "https://www.macrumors.com/guide/iphone-14-vs-iphone-16/",
+  },
 ];

@@ -141,7 +141,10 @@
   }
   img,
   iframe {
-    @apply rounded-xl;
+    @apply my-4 rounded-xl;
+  }
+  svg {
+    @apply sr-only;
   }
   pre:has(code) {
     @apply my-6 whitespace-pre-wrap rounded bg-muted px-[0.3rem] py-[0.2rem];

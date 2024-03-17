@@ -2,13 +2,12 @@ import type { Item } from "./_components/dashboard-item";
 
 export const exampleData: Item[] = [
   {
-    title:
-      "China plans to build a giant rail gun to launch hypersonic planes into space, making Nasa's dream come true",
+    title: "Biden's $53 Million February Haul Fuels Money Edge Over Trump",
     description:
-      "Chinese scientists are combining electromagnetic launch and hypersonic flight to create a new way to send people into space",
+      "The president's campaign and affiliated groups, including the D.N.C., hold a significant cash-on-hand advantage over Donald J. Trump and Republicans, as Mr. Trump continues to spend on legal bills.",
     type: "news",
     id: "-2",
-    url: "https://www.scmp.com/news/china/science/article/3255351/nasas-dream-comes-true-china-plans-build-giant-rail-gun-launch-hypersonic-planes-space",
+    url: "https://www.nytimes.com/2024/03/17/us/politics/biden-february-fundraising-2024.html",
   },
   {
     title:

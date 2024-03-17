@@ -1,9 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import { extract } from "@extractus/article-extractor";
-
 import { AspectRatio } from "@ai-inbox/ui/aspect-ratio";
 import { Separator } from "@ai-inbox/ui/separator";
+import { extractFromHtml } from "@extractus/article-extractor";
 
 import type { Item } from "../dashboard-item";
 
@@ -20,7 +19,15 @@ export async function NewsArticle({
     );
   }
 
-  const extractedData = await extract(item.url);
+  const extractedHtml = await fetch(item.url, {
+    headers: {
+      "User-Agent":
+        "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+    },
+  });
+  const extractedData = await extractFromHtml(
+    (await extractedHtml.text()).trim(),
+  );
 
   return (
     <div className="flex justify-center">

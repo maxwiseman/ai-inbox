@@ -5,6 +5,12 @@ import { Spinner } from "@ai-inbox/ui/spinner";
 import { NewsArticle } from "~/app/_components/details/news-article";
 import { exampleData } from "~/app/example-data";
 
+export function generateStaticParams(): { itemId: string }[] {
+  return exampleData.map((item) => ({
+    itemId: item.id,
+  }));
+}
+
 export default async function Page({
   params,
 }: {

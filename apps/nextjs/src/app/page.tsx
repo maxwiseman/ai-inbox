@@ -1,5 +1,3 @@
-export const runtime = "edge";
-
 export default function Page(): React.ReactElement {
   return (
     <main className="container h-screen py-16">

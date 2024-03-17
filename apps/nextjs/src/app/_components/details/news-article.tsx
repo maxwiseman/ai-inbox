@@ -44,7 +44,10 @@ export async function NewsArticle({
                   {" "}
                   by{" "}
                   {extractedData.author.startsWith("@") ? (
-                    <Link href={`https://x.com/${extractedData.author}`}>
+                    <Link
+                      target="_blank"
+                      href={`https://x.com/${extractedData.author}`}
+                    >
                       <strong>
                         {extractedData.author ?? "unknown author"}
                       </strong>
@@ -69,7 +72,7 @@ export async function NewsArticle({
               {extractedData.source ? (
                 <>
                   on{" "}
-                  <Link href={extractedData.url ?? ""}>
+                  <Link target="_blank" href={extractedData.url ?? ""}>
                     <strong>
                       {extractedData.source ?? "unknown media outlet"}
                     </strong>
@@ -80,7 +83,7 @@ export async function NewsArticle({
           ) : (
             <div>
               Published on{" "}
-              <Link href={extractedData?.url ?? ""}>
+              <Link target="_blank" href={extractedData?.url ?? ""}>
                 <strong>
                   {extractedData?.source ?? "unknown media outlet"}
                 </strong>

@@ -18,16 +18,16 @@ function PostCard(props: {
           asChild
           href={{
             pathname: "/post/[id]",
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access -- this isn't a problem
+             
             params: { id: props.post.id },
           }}
         >
           <Pressable className="">
             <Text className=" text-xl font-semibold text-primary">
-              {/* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- itll be fine */}
+              { }
               {props.post.title}
             </Text>
-            {/* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- itll be fine */}
+            { }
             <Text className="mt-2 text-foreground">{props.post.content}</Text>
           </Pressable>
         </Link>
@@ -129,7 +129,7 @@ export default function Index(): React.ReactElement {
         </View>
 
         <FlashList
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- itll be fine
+           
           data={postQuery.data}
           estimatedItemSize={20}
           // eslint-disable-next-line react/no-unstable-nested-components -- this is all boilerplate

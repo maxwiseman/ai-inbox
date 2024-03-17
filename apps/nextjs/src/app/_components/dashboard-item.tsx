@@ -1,6 +1,8 @@
-import { IconMail, IconNews, IconSettings } from "@tabler/icons-react";
+"use client";
 
-import { Button } from "@ai-inbox/ui/button";
+import { usePathname } from "next/navigation";
+import { LinkButton } from "@ai-inbox/ui/button";
+import { IconMail, IconNews, IconSettings } from "@tabler/icons-react";
 
 export function DashboardItem({ item }: { item: Item }): React.ReactElement {
   // eslint-disable-next-line react/jsx-no-useless-fragment -- i need it to be a react node
@@ -16,9 +18,12 @@ export function DashboardItem({ item }: { item: Item }): React.ReactElement {
       icon = <IconSettings size={20} className="shrink-0" />;
   }
 
+  const pathname = usePathname();
+
   return (
-    <Button
-      variant="ghost"
+    <LinkButton
+      href={`/details/${item.id}`}
+      variant={pathname.includes(`/details/${item.id}`) ? "secondary" : "ghost"}
       className="max-w-full items-center justify-start gap-2 p-1 px-1"
     >
       {icon}
@@ -26,13 +31,15 @@ export function DashboardItem({ item }: { item: Item }): React.ReactElement {
       <span className="line-clamp-1 text-wrap text-sm text-muted-foreground">
         {item.description}
       </span>
-    </Button>
+    </LinkButton>
   );
 }
 
-export interface Item {
+export type Item = {
   title: string;
   description: string;
   id: string;
-  type: "email" | "news" | "other";
-}
+} & (
+  | { type: "news" | "other"; url: string }
+  | { type: "email"; email: string }
+);

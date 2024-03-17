@@ -8,7 +8,7 @@ export default function Layout({
   return (
     <>
       <Navbar />
-      <div className="p-8">{children}</div>
+      <div>{children}</div>
     </>
   );
 }

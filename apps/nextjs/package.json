@@ -26,6 +26,7 @@
     "@trpc/client": "11.0.0-next-beta.294",
     "@trpc/react-query": "11.0.0-next-beta.294",
     "@trpc/server": "11.0.0-next-beta.294",
+    "@uidotdev/usehooks": "^2.4.1",
     "geist": "^1.2.2",
     "next": "^14.1.0",
     "node-fetch": "v2",

@@ -1,13 +1,13 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@ai-inbox/ui/resizable";
 import { ScrollArea } from "@ai-inbox/ui/scroll-area";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
 export default function Layout({
   children,
@@ -17,6 +17,9 @@ export default function Layout({
   details: React.ReactNode;
 }): React.ReactElement {
   const pathname = usePathname();
+
+  if (useMediaQuery("(max-width: 750px)") && pathname.startsWith("/details"))
+    return <>{details}</>;
 
   return (
     <ResizablePanelGroup

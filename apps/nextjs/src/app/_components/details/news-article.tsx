@@ -1,9 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import { extract } from "@extractus/article-extractor";
-
 import { AspectRatio } from "@ai-inbox/ui/aspect-ratio";
 import { Separator } from "@ai-inbox/ui/separator";
+import { extract } from "@extractus/article-extractor";
 
 import type { Item } from "../dashboard-item";
 
@@ -43,7 +42,16 @@ export async function NewsArticle({
               !extractedData.author.includes("http") ? (
                 <>
                   {" "}
-                  by <strong>{extractedData.author ?? "unknown author"}</strong>
+                  by{" "}
+                  {extractedData.author.startsWith("@") ? (
+                    <Link href={`https://x.com/${extractedData.author}`}>
+                      <strong>
+                        {extractedData.author ?? "unknown author"}
+                      </strong>
+                    </Link>
+                  ) : (
+                    <strong>{extractedData.author ?? "unknown author"}</strong>
+                  )}
                 </>
               ) : null}
             </div>

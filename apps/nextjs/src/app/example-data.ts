@@ -2,6 +2,24 @@ import type { Item } from "./_components/dashboard-item";
 
 export const exampleData: Item[] = [
   {
+    title:
+      "China plans to build a giant rail gun to launch hypersonic planes into space, making Nasa's dream come true",
+    description:
+      "Chinese scientists are combining electromagnetic launch and hypersonic flight to create a new way to send people into space",
+    type: "news",
+    id: "-2",
+    url: "https://www.scmp.com/news/china/science/article/3255351/nasas-dream-comes-true-china-plans-build-giant-rail-gun-launch-hypersonic-planes-space",
+  },
+  {
+    title:
+      "New AI 'assistant' being tested by NYC teachers to create lesson plans",
+    description:
+      "An artificial intelligence program from South America that creates lesson plans for teachers is now being piloted in some Brooklyn high schools, The Post has learned.",
+    type: "news",
+    id: "-1",
+    url: "https://nypost.com/2024/03/16/us-news/ai-tool-being-tested-by-nyc-teachers-to-create-lesson-plans/",
+  },
+  {
     title: "India walks back AI regulations",
     description:
       "India has recently revised its approach towards the regulation of artificial intelligence (AI), moving away from a plan that would have required tech firms to obtain government approval before launching or deploying AI models in the market. This decision comes after the initial advisory, issued on March 1, faced significant backlash from both local and international entrepreneurs and investors. The criticism led the Ministry of Electronics and IT to update the advisory, which now advises firms to label under-tested and unreliable AI models to inform users of their potential fallibility, rather than seeking prior government approval",

@@ -28,7 +28,7 @@ export default function Layout({
           style={{
             maskImage: `linear-gradient(#000,#000,transparent 0,#000 10px,#000 calc(100% - 10px),transparent)`,
           }}
-          className="h-[calc(100vh-7rem)]"
+          className="relative h-[calc(100vh-7rem)]"
         >
           {children}
         </ScrollArea>

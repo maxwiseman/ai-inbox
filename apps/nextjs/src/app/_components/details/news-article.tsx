@@ -27,18 +27,15 @@ export async function NewsArticle({
       <div className="max-w-prose p-8">
         {extractedData?.image ? (
           <AspectRatio
-            className="mb-4 animate-pulse overflow-hidden rounded-lg bg-primary/10 bg-cover bg-center bg-no-repeat"
+            className="mb-8 animate-pulse overflow-hidden rounded-lg bg-primary/10 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url("${extractedData.image}")` }}
             ratio={16 / 9}
           />
         ) : null}
         <div className="flex flex-col text-lg text-muted-foreground">
-          <Link
-            className="mb-2 scroll-m-20 text-4xl font-extrabold tracking-tight text-primary !no-underline"
-            href={extractedData?.url ?? ""}
-          >
-            <h1>{extractedData?.title}</h1>
-          </Link>
+          <h1 className="mb-2 scroll-m-20 text-4xl font-extrabold tracking-tight text-primary">
+            {extractedData?.title}
+          </h1>
           {extractedData?.ttr ? (
             <div>
               <strong>{Math.floor(extractedData.ttr / 60)} minute</strong> read
@@ -72,9 +69,18 @@ export async function NewsArticle({
                 </>
               ) : null}
             </div>
-          ) : null}
+          ) : (
+            <div>
+              Published on{" "}
+              <Link href={extractedData?.url ?? ""}>
+                <strong>
+                  {extractedData?.source ?? "unknown media outlet"}
+                </strong>
+              </Link>
+            </div>
+          )}
         </div>
-        <Separator className="my-4" />
+        <Separator className="my-8" />
         <div
           className="typography "
           dangerouslySetInnerHTML={{

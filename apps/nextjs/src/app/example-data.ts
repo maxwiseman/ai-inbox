@@ -80,11 +80,11 @@ export const exampleData: Item[] = [
 
 export async function GetNytData(): Promise<Item[]> {
   const rssData = (await parse(
-    "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+    "https://www.economist.com/business/rss.xml",
   )) as RssData;
   return rssData.items.map((item) => ({
     description: item.description,
-    id: item.id.replaceAll("/", "%2F").replaceAll(":", "%3A"),
+    id: item.link.replaceAll("/", "%2F").replaceAll(":", "%3A"),
     title: item.title,
     type: "news",
     url: item.link,

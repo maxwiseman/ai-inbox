@@ -140,7 +140,9 @@
     @apply !font-semibold;
   }
   img,
-  iframe {
+  iframe,
+  video,
+  audio {
     @apply my-4 rounded-xl;
   }
   svg {

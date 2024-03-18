@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { extractFromHtml } from "@extractus/article-extractor";
+import { extract } from "@extractus/article-extractor";
 
 import { AspectRatio } from "@ai-inbox/ui/aspect-ratio";
 import { Separator } from "@ai-inbox/ui/separator";
@@ -8,17 +8,23 @@ import { Separator } from "@ai-inbox/ui/separator";
 export async function NewsArticle({
   url,
 }: {
-  url: string;
+  url: string | undefined;
 }): Promise<React.ReactElement> {
-  const extractedHtml = await fetch(url, {
-    headers: {
-      "User-Agent":
-        "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
-    },
-  });
-  const extractedData = await extractFromHtml(
-    (await extractedHtml.text()).trim(),
-  );
+  let extractedData;
+  try {
+    extractedData = await extract(
+      url ?? "",
+      {},
+      {
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+        },
+      },
+    );
+  } catch {
+    extractedData = await extract(url ?? "");
+  }
 
   return (
     <div className="flex justify-center">

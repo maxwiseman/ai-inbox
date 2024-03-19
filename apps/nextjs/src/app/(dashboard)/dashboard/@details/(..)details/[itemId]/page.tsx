@@ -1,9 +1,8 @@
 import React, { Suspense } from "react";
-
 import { Spinner } from "@ai-inbox/ui/spinner";
 
 import { NewsArticle } from "~/app/_components/details/news-article";
-import { exampleData, GetNytData } from "~/app/example-data";
+import { exampleData, getRssData } from "~/app/example-data";
 
 export function generateStaticParams(): { itemId: string }[] {
   return exampleData.map((item) => ({
@@ -19,7 +18,7 @@ export default async function Page({
   // const articleData = exampleData.filter(
   //   (item) => item.id === params.itemId,
   // )[0];
-  const articleData = await GetNytData().then(
+  const articleData = await getRssData().then(
     (res) => res.filter((item) => item.id === params.itemId)[0],
   );
 

@@ -1,11 +1,15 @@
 "use client";
 
 // import { useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
 import { cn } from "@ai-inbox/ui";
 import { Badge } from "@ai-inbox/ui/badge";
+import { LinkButton } from "@ai-inbox/ui/button";
+import { Input } from "@ai-inbox/ui/input";
+import { Popover, PopoverContent, PopoverTrigger } from "@ai-inbox/ui/popover";
+import { IconArrowRight } from "@tabler/icons-react";
 
 // import { useSession } from "next-auth/react";
 
@@ -22,6 +26,8 @@ export function Navbar(): React.ReactElement {
   //     router.replace("/");
   //   }
   // }, [router, session.status]);
+
+  const [inputUrl, setInputUrl] = useState("");
 
   return (
     <header className="sticky top-0 z-40 flex h-14 items-center justify-center border-b border-border bg-background/95 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/75">
@@ -46,6 +52,31 @@ export function Navbar(): React.ReactElement {
           >
             Dashboard
           </Link>
+          <Popover>
+            <PopoverTrigger
+              className={cn(
+                "cursor-pointer text-sm text-foreground/60 transition-colors hover:text-foreground/80",
+              )}
+            >
+              Open URL
+            </PopoverTrigger>
+            <PopoverContent>
+              <div className="flex items-center gap-2">
+                <Input
+                  onChange={(e) => {
+                    setInputUrl(e.target.value);
+                  }}
+                  placeholder="URL"
+                />
+                <LinkButton
+                  href={`/details/${inputUrl.replaceAll("/", "%2F").replaceAll(":", "%3A")}`}
+                  className="aspect-square"
+                  size="icon"
+                  icon={<IconArrowRight />}
+                />
+              </div>
+            </PopoverContent>
+          </Popover>
         </div>
         <div className="flex flex-row items-center justify-end gap-3">
           {/* <Search className="hidden sm:flex" />

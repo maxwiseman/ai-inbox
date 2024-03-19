@@ -78,7 +78,7 @@ export const exampleData: Item[] = [
   },
 ];
 
-export async function GetNytData(): Promise<Item[]> {
+export async function getRssData(): Promise<Item[]> {
   const rssData = (await parse(
     "https://www.economist.com/business/rss.xml",
   )) as RssData;

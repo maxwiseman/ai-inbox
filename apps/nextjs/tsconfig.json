@@ -1,6 +1,8 @@
 {
   "extends": "@ai-inbox/tsconfig/base.json",
   "compilerOptions": {
+    "types": ["@serwist/next/typings"],
+    "lib": ["webworker"],
     "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"]

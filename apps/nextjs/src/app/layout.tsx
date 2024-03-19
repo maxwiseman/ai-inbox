@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { GeistMono } from "geist/font/mono";
-
 import { ThemeProvider } from "@ai-inbox/ui/theme";
 import { Toaster } from "@ai-inbox/ui/toast";
+import { GeistMono } from "geist/font/mono";
 
 // import { GeistSans } from "geist/font/sans";
 
@@ -17,6 +16,13 @@ export const metadata: Metadata = {
       ? "https://inbox.maxwiseman.io"
       : "http://localhost:3000",
   ),
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "AI Inbox",
+    // startUpImage: [],
+  },
+  manifest: "/manifest.json",
   title: "AI Inbox",
   description: "An AI powered inbox for your everything you need",
   openGraph: {
@@ -35,7 +41,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
+    { media: "(prefers-color-scheme: dark)", color: "#09090B" },
   ],
 };
 

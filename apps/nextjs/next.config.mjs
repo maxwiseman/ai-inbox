@@ -29,7 +29,10 @@ const config = {
   ],
 
   experimental: {
-    serverComponentsExternalPackages: ["@extractus/article-extractor"],
+    serverComponentsExternalPackages: [
+      "@extractus/article-extractor",
+      "@serwist/next",
+    ],
   },
 
   /** We already do linting and typechecking as separate tasks in CI */

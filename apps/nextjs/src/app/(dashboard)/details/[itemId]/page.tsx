@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import React, { Suspense } from "react";
-import { Spinner } from "@ai-inbox/ui/spinner";
+import React from "react";
 import { extract } from "@extractus/article-extractor";
 
 import { NewsArticle } from "~/app/_components/details/news-article";
@@ -42,28 +41,19 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({
+export default function Page({
   params,
 }: {
   params: { itemId: string };
-}): Promise<React.ReactElement> {
+}): React.ReactElement {
   const articleData = exampleData.filter(
     (item) => item.id === params.itemId,
   )[0];
 
   return (
-    <Suspense
-      fallback={
-        <div className="absolute inset-0 flex flex-row items-center justify-center gap-2 text-muted-foreground">
-          <Spinner />
-          Loading...
-        </div>
-      }
-    >
-      <NewsArticle
-        url={params.itemId.replaceAll("%2F", "/").replaceAll("%3A", ":")}
-      />
-    </Suspense>
+    <NewsArticle
+      url={params.itemId.replaceAll("%2F", "/").replaceAll("%3A", ":")}
+    />
   );
   if (articleData?.type === "news") return <div>Article not found</div>;
 }

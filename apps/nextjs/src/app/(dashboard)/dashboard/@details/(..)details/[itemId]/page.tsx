@@ -1,6 +1,4 @@
-import React, { Suspense } from "react";
-
-import { Spinner } from "@ai-inbox/ui/spinner";
+import React from "react";
 
 import { NewsArticle } from "~/app/_components/details/news-article";
 import { exampleData, getRssData } from "~/app/example-data";
@@ -24,18 +22,9 @@ export default async function Page({
   );
 
   return (
-    <Suspense
-      fallback={
-        <div className="absolute inset-0 flex flex-row items-center justify-center gap-2 text-muted-foreground">
-          <Spinner />
-          Loading...
-        </div>
-      }
-    >
-      <NewsArticle
-        url={params.itemId.replaceAll("%2F", "/").replaceAll("%3A", ":")}
-      />
-    </Suspense>
+    <NewsArticle
+      url={params.itemId.replaceAll("%2F", "/").replaceAll("%3A", ":")}
+    />
   );
   if (articleData?.type === "news") return <div>Article not found</div>;
 }

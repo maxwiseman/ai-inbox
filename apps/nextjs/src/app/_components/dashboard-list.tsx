@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { IconFilter, IconSortAscending } from "@tabler/icons-react";
-
 import { Button } from "@ai-inbox/ui/button";
 import {
   DropdownMenu,
@@ -11,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@ai-inbox/ui/dropdown-menu";
 import { Input } from "@ai-inbox/ui/input";
+import { IconFilter, IconSortAscending } from "@tabler/icons-react";
 
 import type { Item } from "~/app/_components/dashboard-item";
 import { DashboardItem } from "~/app/_components/dashboard-item";
@@ -34,8 +33,9 @@ export function DashboardList({
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" icon={<IconFilter />}>
-              Filter
+            <Button className="h-9 min-w-9 p-0 sm:px-4" variant="outline">
+              <IconFilter className="mr-0 min-h-4 min-w-4 max-w-4 sm:mr-2" />
+              <span className="hidden sm:inline-block">Filter</span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
@@ -48,8 +48,9 @@ export function DashboardList({
         </DropdownMenu>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" icon={<IconSortAscending />}>
-              Sort
+            <Button className="h-9 min-w-9 p-0 sm:px-4" variant="outline">
+              <IconSortAscending className="mr-0 min-h-4 min-w-4 max-w-4 sm:mr-2" />
+              <span className="hidden sm:inline-block">Sort</span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent>

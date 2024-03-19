@@ -1,4 +1,5 @@
 import React, { Suspense } from "react";
+
 import { Spinner } from "@ai-inbox/ui/spinner";
 
 import { NewsArticle } from "~/app/_components/details/news-article";

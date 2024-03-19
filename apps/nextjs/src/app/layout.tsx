@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     capable: true,
     statusBarStyle: "default",
     title: "AI Inbox",
+    startupImage: { url: "/icons/icon_rounded.svg" },
     // startUpImage: [],
   },
   manifest: "/manifest.json",
@@ -33,8 +34,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "AI Inbox",
-    creator: "maxwiseman",
+    site: "@maxwiseman",
+    creator: "@maxwiseman",
   },
 };
 

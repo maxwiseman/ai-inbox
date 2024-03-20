@@ -19,18 +19,24 @@ export async function generateMetadata({
   const url = params.itemId?.replaceAll("%2F", "/").replaceAll("%3A", ":");
   let extractedData;
   try {
-    extractedData = await extract(
-      url ?? "",
-      {},
-      {
-        headers: {
-          "User-Agent":
-            "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+    try {
+      extractedData = await extract(
+        url ?? "",
+        {},
+        {
+          headers: {
+            "User-Agent":
+              "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+          },
         },
-      },
-    );
+      );
+    } catch {
+      extractedData = await extract(url ?? "");
+    }
   } catch {
-    extractedData = await extract(url ?? "");
+    return {
+      title: "Unknown Article - AI Inbox",
+    };
   }
   if (extractedData === null) return {};
   return {

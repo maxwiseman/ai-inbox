@@ -1,10 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { GeistMono } from "geist/font/mono";
-
 import { ThemeProvider } from "@ai-inbox/ui/theme";
 import { Toaster } from "@ai-inbox/ui/toast";
-
-// import { GeistSans } from "geist/font/sans";
+import { GeistSans } from "geist/font/sans";
 
 import { env } from "~/env";
 import { TRPCReactProvider } from "~/trpc/react";
@@ -53,7 +50,7 @@ export default function RootLayout(props: {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`min-h-screen bg-background font-mono text-foreground antialiased ${GeistMono.variable}`}
+        className={`min-h-screen bg-background font-sans text-foreground antialiased ${GeistSans.variable}`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <TRPCReactProvider>{props.children}</TRPCReactProvider>

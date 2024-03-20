@@ -1,9 +1,10 @@
 import React from "react";
 import Link from "next/link";
-import { extract } from "@extractus/article-extractor";
-
 import { AspectRatio } from "@ai-inbox/ui/aspect-ratio";
+import { LinkButton } from "@ai-inbox/ui/button";
 import { Separator } from "@ai-inbox/ui/separator";
+import { extract } from "@extractus/article-extractor";
+import { IconHome } from "@tabler/icons-react";
 
 export async function NewsArticle({
   url,
@@ -12,18 +13,29 @@ export async function NewsArticle({
 }): Promise<React.ReactElement> {
   let extractedData;
   try {
-    extractedData = await extract(
-      url ?? "",
-      {},
-      {
-        headers: {
-          "User-Agent":
-            "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+    try {
+      extractedData = await extract(
+        url ?? "",
+        {},
+        {
+          headers: {
+            "User-Agent":
+              "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+          },
         },
-      },
-    );
+      );
+    } catch {
+      extractedData = await extract(url ?? "");
+    }
   } catch {
-    extractedData = await extract(url ?? "");
+    return (
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-muted-foreground">
+        Couldn&lsquo;t get data from article!
+        <LinkButton href="/dashboard" icon={<IconHome />}>
+          Go Home
+        </LinkButton>
+      </div>
+    );
   }
 
   return (

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "@ai-inbox/ui/theme";
 import { Toaster } from "@ai-inbox/ui/toast";
+import { Analytics } from "@vercel/analytics/react";
 import { GeistSans } from "geist/font/sans";
 
 import { env } from "~/env";
@@ -56,6 +57,7 @@ export default function RootLayout(props: {
           <TRPCReactProvider>{props.children}</TRPCReactProvider>
           <Toaster />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

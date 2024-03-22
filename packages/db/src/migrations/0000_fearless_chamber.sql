@@ -1,4 +1,4 @@
-CREATE TABLE `turbo_account` (
+CREATE TABLE `ai-inbox_account` (
 	`userId` text(255) NOT NULL,
 	`type` text(255) NOT NULL,
 	`provider` text(255) NOT NULL,
@@ -13,13 +13,13 @@ CREATE TABLE `turbo_account` (
 	PRIMARY KEY(`provider`, `providerAccountId`)
 );
 --> statement-breakpoint
-CREATE TABLE `turbo_session` (
+CREATE TABLE `ai-inbox_session` (
 	`sessionToken` text(255) PRIMARY KEY NOT NULL,
 	`userId` text(255) NOT NULL,
 	`expires` integer NOT NULL
 );
 --> statement-breakpoint
-CREATE TABLE `turbo_user` (
+CREATE TABLE `ai-inbox_user` (
 	`id` text(255) PRIMARY KEY NOT NULL,
 	`name` text(255),
 	`email` text(255) NOT NULL,
@@ -27,14 +27,14 @@ CREATE TABLE `turbo_user` (
 	`image` text(255)
 );
 --> statement-breakpoint
-CREATE TABLE `turbo_verificationToken` (
+CREATE TABLE `ai-inbox_verificationToken` (
 	`identifier` text(255) NOT NULL,
 	`token` text(255) NOT NULL,
 	`expires` integer NOT NULL,
 	PRIMARY KEY(`identifier`, `token`)
 );
 --> statement-breakpoint
-CREATE TABLE `turbo_post` (
+CREATE TABLE `ai-inbox_post` (
 	`id` integer PRIMARY KEY NOT NULL,
 	`name` text(256) NOT NULL,
 	`content` text(256) NOT NULL,
@@ -42,5 +42,5 @@ CREATE TABLE `turbo_post` (
 	`updatedAt` integer
 );
 --> statement-breakpoint
-CREATE INDEX `userId_idx` ON `turbo_account` (`userId`);--> statement-breakpoint
-CREATE INDEX `userId_idx` ON `turbo_session` (`userId`);
+CREATE INDEX `userId_idx` ON `ai-inbox_account` (`userId`);--> statement-breakpoint
+CREATE INDEX `userId_idx` ON `ai-inbox_session` (`userId`);

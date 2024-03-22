@@ -1,11 +1,11 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "67e4fd74-6e2a-4943-83b2-7d84318c2a76",
+  "id": "68ed7b10-591f-4138-b037-826ee0ad2907",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
-    "turbo_account": {
-      "name": "turbo_account",
+    "ai-inbox_account": {
+      "name": "ai-inbox_account",
       "columns": {
         "userId": {
           "name": "userId",
@@ -96,18 +96,18 @@
       },
       "foreignKeys": {},
       "compositePrimaryKeys": {
-        "turbo_account_provider_providerAccountId_pk": {
+        "ai-inbox_account_provider_providerAccountId_pk": {
           "columns": [
             "provider",
             "providerAccountId"
           ],
-          "name": "turbo_account_provider_providerAccountId_pk"
+          "name": "ai-inbox_account_provider_providerAccountId_pk"
         }
       },
       "uniqueConstraints": {}
     },
-    "turbo_session": {
-      "name": "turbo_session",
+    "ai-inbox_session": {
+      "name": "ai-inbox_session",
       "columns": {
         "sessionToken": {
           "name": "sessionToken",
@@ -144,8 +144,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "turbo_user": {
-      "name": "turbo_user",
+    "ai-inbox_user": {
+      "name": "ai-inbox_user",
       "columns": {
         "id": {
           "name": "id",
@@ -188,8 +188,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "turbo_verificationToken": {
-      "name": "turbo_verificationToken",
+    "ai-inbox_verificationToken": {
+      "name": "ai-inbox_verificationToken",
       "columns": {
         "identifier": {
           "name": "identifier",
@@ -216,18 +216,18 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {
-        "turbo_verificationToken_identifier_token_pk": {
+        "ai-inbox_verificationToken_identifier_token_pk": {
           "columns": [
             "identifier",
             "token"
           ],
-          "name": "turbo_verificationToken_identifier_token_pk"
+          "name": "ai-inbox_verificationToken_identifier_token_pk"
         }
       },
       "uniqueConstraints": {}
     },
-    "turbo_post": {
-      "name": "turbo_post",
+    "ai-inbox_post": {
+      "name": "ai-inbox_post",
       "columns": {
         "id": {
           "name": "id",

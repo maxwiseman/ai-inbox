@@ -43,7 +43,18 @@ export async function generateMetadata({
     title: `${extractedData.title ?? "Untitled Article"} - AI Inbox`,
     openGraph: {
       images: { url: extractedData.image ?? "" },
+      authors: [extractedData.author ?? ""],
+      publishedTime: extractedData.published,
     },
+    authors: [
+      {
+        name: extractedData.author,
+        url: extractedData.author?.startsWith("@")
+          ? `https://x.com/${extractedData.author}`
+          : undefined,
+      },
+    ],
+    publisher: extractedData.source,
   };
 }
 

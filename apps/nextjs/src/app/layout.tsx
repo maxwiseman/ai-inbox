@@ -9,6 +9,10 @@ import { TRPCReactProvider } from "~/trpc/react";
 
 import "~/app/globals.css";
 
+import { auth } from "@ai-inbox/auth";
+
+import { ServerSessionProvider } from "./_components/server-session-provider";
+
 export const metadata: Metadata = {
   metadataBase: new URL(
     env.VERCEL_ENV === "production"
@@ -45,18 +49,22 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout(props: {
+export default async function RootLayout(props: {
   children: React.ReactNode;
-}): React.ReactElement {
+}): Promise<React.ReactElement> {
+  const session = await auth();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={`min-h-screen bg-background font-sans text-foreground antialiased ${GeistSans.variable}`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <TRPCReactProvider>{props.children}</TRPCReactProvider>
-          <Toaster />
-        </ThemeProvider>
+        <ServerSessionProvider session={session}>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <TRPCReactProvider>{props.children}</TRPCReactProvider>
+            <Toaster />
+          </ThemeProvider>
+        </ServerSessionProvider>
         <Analytics />
       </body>
     </html>

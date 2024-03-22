@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "4f65183a-8d89-432c-b1ef-8cd069ed5d91",
+  "id": "67e4fd74-6e2a-4943-83b2-7d84318c2a76",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "turbo_account": {
@@ -173,8 +173,7 @@
           "type": "integer",
           "primaryKey": false,
           "notNull": false,
-          "autoincrement": false,
-          "default": "CURRENT_TIMESTAMP(3)"
+          "autoincrement": false
         },
         "image": {
           "name": "image",

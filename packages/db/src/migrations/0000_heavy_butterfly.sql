@@ -23,7 +23,7 @@ CREATE TABLE `turbo_user` (
 	`id` text(255) PRIMARY KEY NOT NULL,
 	`name` text(255),
 	`email` text(255) NOT NULL,
-	`emailVerified` integer DEFAULT CURRENT_TIMESTAMP(3),
+	`emailVerified` integer,
 	`image` text(255)
 );
 --> statement-breakpoint

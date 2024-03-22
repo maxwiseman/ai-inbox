@@ -16,7 +16,7 @@ export async function generateMetadata({
 }: {
   params: { itemId?: string };
 }): Promise<Metadata> {
-  const url = encodeURIComponent(params.itemId ?? "");
+  const url = decodeURIComponent(params.itemId ?? "");
   let extractedData;
   try {
     try {

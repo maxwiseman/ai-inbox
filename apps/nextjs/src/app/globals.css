@@ -145,6 +145,9 @@
   audio {
     @apply my-4 rounded-xl;
   }
+  audio {
+    @apply w-full;
+  }
   svg {
     @apply sr-only;
   }

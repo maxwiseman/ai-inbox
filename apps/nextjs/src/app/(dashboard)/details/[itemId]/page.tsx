@@ -16,12 +16,12 @@ export async function generateMetadata({
 }: {
   params: { itemId?: string };
 }): Promise<Metadata> {
-  const url = params.itemId?.replaceAll("%2F", "/").replaceAll("%3A", ":");
+  const url = encodeURIComponent(params.itemId ?? "");
   let extractedData;
   try {
     try {
       extractedData = await extract(
-        url ?? "",
+        url,
         {},
         {
           headers: {
@@ -31,7 +31,7 @@ export async function generateMetadata({
         },
       );
     } catch {
-      extractedData = await extract(url ?? "");
+      extractedData = await extract(url);
     }
   } catch {
     return {
@@ -67,10 +67,6 @@ export default function Page({
     (item) => item.id === params.itemId,
   )[0];
 
-  return (
-    <NewsArticle
-      url={params.itemId.replaceAll("%2F", "/").replaceAll("%3A", ":")}
-    />
-  );
+  return <NewsArticle url={decodeURIComponent(params.itemId)} />;
   if (articleData?.type === "news") return <div>Article not found</div>;
 }

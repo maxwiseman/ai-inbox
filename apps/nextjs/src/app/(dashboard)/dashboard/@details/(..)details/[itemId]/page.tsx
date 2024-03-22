@@ -21,10 +21,6 @@ export default async function Page({
     (res) => res.filter((item) => item.id === params.itemId)[0],
   );
 
-  return (
-    <NewsArticle
-      url={params.itemId.replaceAll("%2F", "/").replaceAll("%3A", ":")}
-    />
-  );
+  return <NewsArticle url={decodeURIComponent(params.itemId)} />;
   if (articleData?.type === "news") return <div>Article not found</div>;
 }

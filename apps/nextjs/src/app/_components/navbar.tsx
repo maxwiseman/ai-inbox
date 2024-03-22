@@ -4,13 +4,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { IconArrowRight } from "@tabler/icons-react";
-
 import { cn } from "@ai-inbox/ui";
 import { Badge } from "@ai-inbox/ui/badge";
 import { LinkButton } from "@ai-inbox/ui/button";
 import { Input } from "@ai-inbox/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@ai-inbox/ui/popover";
+import { IconArrowRight } from "@tabler/icons-react";
 
 import { UserButton } from "./user-button";
 
@@ -72,7 +71,7 @@ export function Navbar(): React.ReactElement {
                   placeholder="URL"
                 />
                 <LinkButton
-                  href={`/details/${inputUrl.replaceAll("/", "%2F").replaceAll(":", "%3A")}`}
+                  href={`/details/${encodeURIComponent(inputUrl)}`}
                   className="aspect-square"
                   size="icon"
                   icon={<IconArrowRight />}

@@ -84,7 +84,7 @@ export async function getRssData(): Promise<Item[]> {
   )) as RssData;
   return rssData.items.map((item) => ({
     description: item.description,
-    id: item.link.replaceAll("/", "%2F").replaceAll(":", "%3A"),
+    id: encodeURIComponent(item.link),
     title: item.title,
     type: "news",
     url: item.link,

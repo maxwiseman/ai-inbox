@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { IconFilter, IconSortAscending } from "@tabler/icons-react";
+
 import { Button } from "@ai-inbox/ui/button";
 import {
   DropdownMenu,
@@ -9,7 +11,6 @@ import {
   DropdownMenuTrigger,
 } from "@ai-inbox/ui/dropdown-menu";
 import { Input } from "@ai-inbox/ui/input";
-import { IconFilter, IconSortAscending } from "@tabler/icons-react";
 
 import type { Item } from "~/app/_components/dashboard-item";
 import { DashboardItem } from "~/app/_components/dashboard-item";

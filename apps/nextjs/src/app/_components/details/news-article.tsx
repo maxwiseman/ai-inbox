@@ -1,10 +1,11 @@
 import React from "react";
 import Link from "next/link";
+import { extract } from "@extractus/article-extractor";
+import { IconHome } from "@tabler/icons-react";
+
 import { AspectRatio } from "@ai-inbox/ui/aspect-ratio";
 import { LinkButton } from "@ai-inbox/ui/button";
 import { Separator } from "@ai-inbox/ui/separator";
-import { extract } from "@extractus/article-extractor";
-import { IconHome } from "@tabler/icons-react";
 
 export async function NewsArticle({
   url,

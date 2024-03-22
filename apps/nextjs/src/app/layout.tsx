@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { ThemeProvider } from "@ai-inbox/ui/theme";
-import { Toaster } from "@ai-inbox/ui/toast";
 import { Analytics } from "@vercel/analytics/react";
 import { GeistSans } from "geist/font/sans";
+
+import { ThemeProvider } from "@ai-inbox/ui/theme";
+import { Toaster } from "@ai-inbox/ui/toast";
 
 import { env } from "~/env";
 import { TRPCReactProvider } from "~/trpc/react";

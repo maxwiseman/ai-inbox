@@ -12,6 +12,8 @@ import { LinkButton } from "@ai-inbox/ui/button";
 import { Input } from "@ai-inbox/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@ai-inbox/ui/popover";
 
+import { UserButton } from "./user-button";
+
 // import { useSession } from "next-auth/react";
 
 // import { UserButton } from "../_components/ui/user-button";
@@ -80,8 +82,8 @@ export function Navbar(): React.ReactElement {
           </Popover>
         </div>
         <div className="flex flex-row items-center justify-end gap-3">
-          {/* <Search className="hidden sm:flex" />
-          <UserButton /> */}
+          {/* <Search className="hidden sm:flex" /> */}
+          <UserButton />
         </div>
       </nav>
     </header>

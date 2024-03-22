@@ -3,8 +3,9 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Button } from "@ai-inbox/ui/button";
 import { signIn, useSession } from "next-auth/react";
+
+import { Button } from "@ai-inbox/ui/button";
 
 export function SignIn(): React.ReactElement {
   const searchParams = useSearchParams();

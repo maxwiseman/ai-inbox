@@ -1,8 +1,9 @@
 import type { DefaultSession, NextAuthConfig } from "next-auth";
-import { db, tableCreator } from "@ai-inbox/db";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import NextAuth from "next-auth";
 import github from "next-auth/providers/github";
+
+import { db, tableCreator } from "@ai-inbox/db";
 
 // import google from "next-auth/providers/google";
 

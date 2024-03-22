@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+
 import { Badge } from "@ai-inbox/ui/badge";
 
 import { UnsplashImage } from "./image";

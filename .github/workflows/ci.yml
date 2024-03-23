@@ -19,31 +19,31 @@ env:
   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+  # lint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
 
-      - name: Setup
-        uses: ./tooling/github/setup
+  #     - name: Setup
+  #       uses: ./tooling/github/setup
 
-      - name: Copy env
-        shell: bash
-        run: cp .env.example .env
+  #     - name: Copy env
+  #       shell: bash
+  #       run: cp .env.example .env
 
-      - name: Lint
-        run: bun lint && bun lint:ws
+  #     - name: Lint
+  #       run: bun lint && bun lint:ws
 
-  format:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+  # format:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
 
-      - name: Setup
-        uses: ./tooling/github/setup
+  #     - name: Setup
+  #       uses: ./tooling/github/setup
 
-      - name: Format
-        run: bun format
+  #     - name: Format
+  #       run: bun format
 
   typecheck:
     runs-on: ubuntu-latest

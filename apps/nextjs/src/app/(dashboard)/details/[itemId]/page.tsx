@@ -3,7 +3,6 @@ import React from "react";
 import { extract } from "@extractus/article-extractor";
 
 import { NewsArticle } from "~/app/_components/details/news-article";
-import { exampleData } from "~/app/example-data";
 
 // export function generateStaticParams(): { itemId: string }[] {
 //   return exampleData.map((item) => ({
@@ -63,10 +62,10 @@ export default function Page({
 }: {
   params: { itemId: string };
 }): React.ReactElement {
-  const articleData = exampleData.filter(
-    (item) => item.id === params.itemId,
-  )[0];
+  // const articleData = exampleData.filter(
+  //   (item) => item.id === params.itemId,
+  // )[0];
 
   return <NewsArticle url={decodeURIComponent(params.itemId)} />;
-  if (articleData?.type === "news") return <div>Article not found</div>;
+  // if (articleData?.type === "news") return <div>Article not found</div>;
 }

@@ -1,22 +1,27 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { IconMail, IconNews, IconSettings } from "@tabler/icons-react";
-
 import { LinkButton } from "@ai-inbox/ui/button";
+import { IconNews } from "@tabler/icons-react";
 
-export function DashboardItem({ item }: { item: Item }): React.ReactElement {
+import type { NewsItem } from "../example-data";
+
+export function DashboardItem({
+  item,
+}: {
+  item: NewsItem;
+}): React.ReactElement {
   // eslint-disable-next-line react/jsx-no-useless-fragment -- i need it to be a react node
   let icon = <></>;
   switch (item.type) {
-    case "email":
-      icon = <IconMail size={20} className="shrink-0" />;
-      break;
-    case "news":
+    // case "email":
+    //   icon = <IconMail size={20} className="shrink-0" />;
+    //   break;
+    case "newsItem":
       icon = <IconNews size={20} className="shrink-0" />;
       break;
-    case "other":
-      icon = <IconSettings size={20} className="shrink-0" />;
+    // case "other":
+    //   icon = <IconSettings size={20} className="shrink-0" />;
   }
 
   const pathname = usePathname();
@@ -32,7 +37,7 @@ export function DashboardItem({ item }: { item: Item }): React.ReactElement {
         {item.title}
       </span>
       <span className="line-clamp-1 w-0 grow text-wrap text-left text-sm text-muted-foreground">
-        {item.description}
+        {item.contentSnippet}
       </span>
     </LinkButton>
   );

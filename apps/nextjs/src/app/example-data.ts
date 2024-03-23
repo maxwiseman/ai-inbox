@@ -1,4 +1,4 @@
-import parse from "rss-to-json";
+import Parser from "rss-parser";
 
 import type { Item } from "./_components/dashboard-item";
 
@@ -78,52 +78,47 @@ export const exampleData: Item[] = [
   },
 ];
 
-export async function getRssData(): Promise<Item[]> {
-  const rssData = (await parse(
+export async function getRssData(): Promise<NewsFeed> {
+  const parser = new Parser();
+
+  const rssData = await parser.parseURL(
     "https://www.economist.com/business/rss.xml",
-  )) as RssData;
-  return rssData.items.map((item) => ({
-    description: item.description,
-    id: encodeURIComponent(item.link),
-    title: item.title,
-    type: "news",
-    url: item.link,
-  }));
+  );
+
+  return {
+    ...rssData,
+    id: encodeURIComponent(rssData.feedUrl ?? ""),
+    type: "newsFeed",
+    items: rssData.items.map((item) => ({
+      ...item,
+      id: encodeURIComponent(item.link ?? ""),
+      url: item.link,
+      type: "newsItem",
+    })),
+  };
+
+  // return rssData.items.map((item) => ({
+  //   ...item,
+  //   id: encodeURIComponent(item.link ?? ""),
+  //   url: item.link,
+  //   type: "news",
+  //   description: item.contentSnippet ?? "",
+  // }));
 }
 
-export interface RssData {
+export type NewsItem = Parser.Item & {
+  id: string;
+  type: "newsItem";
+};
+
+export type NewsFeed = Omit<Parser.Output<undefined>, "items"> & {
+  id: string;
+  type: "newsFeed";
+  items: NewsItem[];
+};
+
+export type NewsSource = {
   title: string;
-  description: string;
-  link: string;
-  image: string;
-  category: [];
-  items: {
-    id: string;
-    title: string;
-    description: string;
-    link: string;
-    author: string;
-    published: number | Date;
-    created: number | Date;
-    category: {
-      $text: string;
-      domain: string;
-    }[];
-    enclosures: {
-      height: string;
-      medium: string;
-      url: string;
-      width: string;
-    }[];
-    media: {
-      thumbnail:
-        | {
-            height: string;
-            medium: string;
-            url: string;
-            width: string;
-          }
-        | undefined;
-    };
-  }[];
-}
+  url: string;
+  feeds: NewsFeed[];
+};

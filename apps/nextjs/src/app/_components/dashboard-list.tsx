@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { IconFilter, IconSortAscending } from "@tabler/icons-react";
-
 import { Button } from "@ai-inbox/ui/button";
 import {
   DropdownMenu,
@@ -11,15 +9,16 @@ import {
   DropdownMenuTrigger,
 } from "@ai-inbox/ui/dropdown-menu";
 import { Input } from "@ai-inbox/ui/input";
+import { IconFilter, IconSortAscending } from "@tabler/icons-react";
 
-import type { Item } from "~/app/_components/dashboard-item";
+import type { NewsFeed } from "../example-data";
 import { DashboardItem } from "~/app/_components/dashboard-item";
 import { feeds } from "~/app/feeds";
 
 export function DashboardList({
   rssData,
 }: {
-  rssData: Item[];
+  rssData: NewsFeed;
 }): React.ReactElement {
   const [searchString, setSearchString] = useState("");
   return (
@@ -65,8 +64,8 @@ export function DashboardList({
         </DropdownMenu>
       </div>
       <div className="flex w-full flex-col gap-2">
-        {rssData.map((item) =>
-          item.title.toLowerCase().includes(searchString.toLowerCase()) ? (
+        {rssData.items.map((item) =>
+          item.title?.toLowerCase().includes(searchString.toLowerCase()) ? (
             <DashboardItem key={item.id} item={item} />
           ) : null,
         )}

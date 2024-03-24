@@ -71,7 +71,7 @@ export function Navbar(): React.ReactElement {
                   placeholder="URL"
                 />
                 <LinkButton
-                  href={`/details/${encodeURIComponent(inputUrl)}`}
+                  href={`/details/news/${encodeURIComponent(inputUrl)}`}
                   className="aspect-square"
                   size="icon"
                   icon={<IconArrowRight />}

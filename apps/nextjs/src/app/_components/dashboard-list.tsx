@@ -11,14 +11,14 @@ import {
 import { Input } from "@ai-inbox/ui/input";
 import { IconFilter, IconSortAscending } from "@tabler/icons-react";
 
-import type { NewsFeed } from "../example-data";
+import type { DashboardItem as DashboardItemType } from "../example-data";
 import { DashboardItem } from "~/app/_components/dashboard-item";
 import { feeds } from "~/app/feeds";
 
 export function DashboardList({
-  rssData,
+  items,
 }: {
-  rssData: NewsFeed;
+  items: DashboardItemType[];
 }): React.ReactElement {
   const [searchString, setSearchString] = useState("");
   return (
@@ -64,8 +64,8 @@ export function DashboardList({
         </DropdownMenu>
       </div>
       <div className="flex w-full flex-col gap-2">
-        {rssData.items.map((item) =>
-          item.title?.toLowerCase().includes(searchString.toLowerCase()) ? (
+        {items.map((item) =>
+          item.title.toLowerCase().includes(searchString.toLowerCase()) ? (
             <DashboardItem key={item.id} item={item} />
           ) : null,
         )}

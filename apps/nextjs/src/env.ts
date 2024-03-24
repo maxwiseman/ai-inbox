@@ -17,6 +17,8 @@ export const env = createEnv({
     DB_AUTH_TOKEN: z.string(),
     UNSPLASH_ACCESS_KEY: z.string(),
     UNSPLASH_SECRET_KEY: z.string(),
+    // UPSTASH_REDIS_REST_TOKEN: z.string(),
+    // UPSTASH_REDIS_REST_URL: z.string(),
   },
   /**
    * Specify your client-side environment variables schema here.

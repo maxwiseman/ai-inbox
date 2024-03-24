@@ -2,22 +2,22 @@
 
 import { usePathname } from "next/navigation";
 import { LinkButton } from "@ai-inbox/ui/button";
-import { IconNews } from "@tabler/icons-react";
+import { IconMail, IconNews } from "@tabler/icons-react";
 
-import type { NewsItem } from "../example-data";
+import type { DashboardItem } from "../example-data";
 
 export function DashboardItem({
   item,
 }: {
-  item: NewsItem;
+  item: DashboardItem;
 }): React.ReactElement {
   // eslint-disable-next-line react/jsx-no-useless-fragment -- i need it to be a react node
   let icon = <></>;
-  switch (item.type) {
-    // case "email":
-    //   icon = <IconMail size={20} className="shrink-0" />;
-    //   break;
-    case "newsItem":
+  switch (item.details.type) {
+    case "email":
+      icon = <IconMail size={20} className="shrink-0" />;
+      break;
+    case "news":
       icon = <IconNews size={20} className="shrink-0" />;
       break;
     // case "other":
@@ -28,7 +28,7 @@ export function DashboardItem({
 
   return (
     <LinkButton
-      href={`/details/${item.id}`}
+      href={`/details/${item.details.type}/${item.id}`}
       variant={pathname.includes(`/details/${item.id}`) ? "secondary" : "ghost"}
       className="min-w-0 max-w-full shrink grow items-center justify-start gap-2 p-1 px-1"
     >

@@ -114,11 +114,32 @@ export type NewsItem = Parser.Item & {
 export type NewsFeed = Omit<Parser.Output<undefined>, "items"> & {
   id: string;
   type: "newsFeed";
-  items: NewsItem[];
+  items?: NewsItem[];
 };
 
 export type NewsSource = {
   title: string;
+  icon: string;
   url: string;
   feeds: NewsFeed[];
 };
+
+export type DashboardItem = {
+  id: string;
+  title: string;
+  contentSnippet: string;
+  icon: string;
+  details: DashboardDetails;
+};
+
+export type DashboardDetails =
+  | {
+      type: "news";
+      articleUrl: string;
+      date: Date | string;
+      source: string;
+    }
+  | {
+      type: "email";
+      id: string;
+    };

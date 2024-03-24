@@ -13,9 +13,9 @@ import { NewsArticle } from "~/app/_components/details/news-article";
 export async function generateMetadata({
   params,
 }: {
-  params: { itemId?: string };
+  params: { articleUrl?: string; type?: string };
 }): Promise<Metadata> {
-  const url = decodeURIComponent(params.itemId ?? "");
+  const url = decodeURIComponent(params.articleUrl ?? "");
   let extractedData;
   try {
     try {
@@ -60,12 +60,14 @@ export async function generateMetadata({
 export default function Page({
   params,
 }: {
-  params: { itemId: string };
+  params: { articleUrl: string; type: string };
 }): React.ReactElement {
   // const articleData = exampleData.filter(
   //   (item) => item.id === params.itemId,
   // )[0];
 
-  return <NewsArticle url={decodeURIComponent(params.itemId)} />;
+  if (params.type === "news")
+    return <NewsArticle url={decodeURIComponent(params.articleUrl)} />;
+  return <div>Something is not quite right</div>;
   // if (articleData?.type === "news") return <div>Article not found</div>;
 }

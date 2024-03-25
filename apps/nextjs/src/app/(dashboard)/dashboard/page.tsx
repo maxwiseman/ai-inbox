@@ -12,14 +12,19 @@ import { IconFilter, IconSortAscending } from "@tabler/icons-react";
 import type { DashboardItem as DashboardItemType } from "~/app/example-data";
 import { DashboardList } from "~/app/_components/dashboard-list";
 import { getRssData } from "~/app/example-data";
-import { SearchInput } from "./search-input";
+import { feeds } from "~/app/feeds";
+import { SearchInput } from "../../_components/search-input";
 
 export const revalidate = 3600;
 
 export default async function Page({
   searchParams,
 }: {
-  searchParams: { query?: string; sort?: string; filter?: string };
+  searchParams: {
+    query?: string;
+    sort?: "nameAZ" | "nameZA" | "dateAZ" | "dateZA" | "sourceAZ" | "sourceZA";
+    filter?: string;
+  };
 }): Promise<React.ReactElement> {
   const rssData = await getRssData();
 
@@ -35,6 +40,67 @@ export default async function Page({
       source: rssData.title ?? "",
     },
   }));
+
+  switch (searchParams.sort) {
+    case undefined: {
+      items?.sort((a, b) =>
+        // eslint-disable-next-line no-nested-ternary -- its ok
+        a.details.type === "news" &&
+        b.details.type === "news" &&
+        typeof a.details.date === typeof b.details.date
+          ? typeof a.details.date === "string" &&
+            typeof b.details.date === "string"
+            ? b.details.date.localeCompare(a.details.date)
+            : 1
+          : 1,
+      );
+      break;
+    }
+    case "nameAZ": {
+      items?.sort((a, b) => a.title.localeCompare(b.title));
+      break;
+    }
+    case "nameZA": {
+      items?.sort((a, b) => b.title.localeCompare(a.title));
+      break;
+    }
+    case "dateAZ": {
+      items?.sort((a, b) =>
+        // eslint-disable-next-line no-nested-ternary -- its ok
+        a.details.type === "news" &&
+        b.details.type === "news" &&
+        typeof a.details.date === typeof b.details.date
+          ? typeof a.details.date === "string" &&
+            typeof b.details.date === "string"
+            ? a.details.date.localeCompare(b.details.date)
+            : 1
+          : 1,
+      );
+      break;
+    }
+    case "dateZA": {
+      items?.sort((a, b) =>
+        // eslint-disable-next-line no-nested-ternary -- its ok
+        a.details.type === "news" &&
+        b.details.type === "news" &&
+        typeof a.details.date === typeof b.details.date
+          ? typeof a.details.date === "string" &&
+            typeof b.details.date === "string"
+            ? b.details.date.localeCompare(a.details.date)
+            : 1
+          : 1,
+      );
+      break;
+    }
+    case "sourceAZ": {
+      items?.sort((a, b) => a.details.type.localeCompare(b.details.type));
+      break;
+    }
+    case "sourceZA": {
+      items?.sort((a, b) => b.details.type.localeCompare(a.details.type));
+      break;
+    }
+  }
 
   return (
     <div className="relative max-w-full p-2 md:p-8">
@@ -62,11 +128,18 @@ export default async function Page({
               </DropdownMenuCheckboxItem>
               <DropdownMenuSeparator />
             </Link>
-            {/* {feeds.map((source) => (
-              <DropdownMenuCheckboxItem key={source.title}>
-                {source.title}
-              </DropdownMenuCheckboxItem>
-            ))} */}
+            {feeds.map((source) => (
+              <Link
+                key={source.title}
+                href={{ query: { ...searchParams, filter: source.title } }}
+              >
+                <DropdownMenuCheckboxItem
+                  checked={searchParams.filter?.includes(source.title)}
+                >
+                  {source.title}
+                </DropdownMenuCheckboxItem>
+              </Link>
+            ))}
           </DropdownMenuContent>
         </DropdownMenu>
         <DropdownMenu>

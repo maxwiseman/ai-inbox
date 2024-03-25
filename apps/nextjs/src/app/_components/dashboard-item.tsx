@@ -29,7 +29,11 @@ export function DashboardItem({
   return (
     <LinkButton
       href={`/details/${item.details.type}/${item.id}`}
-      variant={pathname.includes(`/details/${item.id}`) ? "secondary" : "ghost"}
+      variant={
+        pathname.includes(`/details/${item.details.type}/${item.id}`)
+          ? "secondary"
+          : "ghost"
+      }
       className="min-w-0 max-w-full shrink grow items-center justify-start gap-2 p-1 px-1"
     >
       {icon}

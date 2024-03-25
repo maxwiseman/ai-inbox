@@ -9,7 +9,10 @@ import {
 } from "@ai-inbox/ui/dropdown-menu";
 import { IconFilter, IconSortAscending } from "@tabler/icons-react";
 
-import type { DashboardItem as DashboardItemType } from "~/app/example-data";
+import type {
+  DashboardItem as DashboardItemType,
+  NewsFeed,
+} from "~/app/example-data";
 import { DashboardList } from "~/app/_components/dashboard-list";
 import { getRssData } from "~/app/example-data";
 import { feeds } from "~/app/feeds";
@@ -26,7 +29,23 @@ export default async function Page({
     filter?: string;
   };
 }): Promise<React.ReactElement> {
-  const rssData = await getRssData();
+  let source = feeds.find(
+    (feedSource) => feedSource.id === searchParams.filter,
+  );
+  if (!source) {
+    source = feeds[0];
+  }
+  const rssData: NewsFeed = await getRssData(
+    // eslint-disable-next-line no-nested-ternary -- prettier is good
+    source?.feeds[0]
+      ? // eslint-disable-next-line no-nested-ternary -- prettier is good
+        source.feeds[0].type === "feed"
+        ? source.feeds[0].url
+        : source.feeds[0].type === "feedGroup" && source.feeds[0].feeds[0]
+          ? source.feeds[0].feeds[0].url
+          : undefined
+      : undefined,
+  );
 
   const items: DashboardItemType[] | undefined = rssData.items?.map((item) => ({
     title: item.title ?? "",
@@ -128,15 +147,15 @@ export default async function Page({
               </DropdownMenuCheckboxItem>
               <DropdownMenuSeparator />
             </Link>
-            {feeds.map((source) => (
+            {feeds.map((newsSource) => (
               <Link
-                key={source.title}
-                href={{ query: { ...searchParams, filter: source.title } }}
+                key={newsSource.title}
+                href={{ query: { ...searchParams, filter: newsSource.id } }}
               >
                 <DropdownMenuCheckboxItem
-                  checked={searchParams.filter?.includes(source.title)}
+                  checked={searchParams.filter?.includes(newsSource.title)}
                 >
-                  {source.title}
+                  {newsSource.title}
                 </DropdownMenuCheckboxItem>
               </Link>
             ))}

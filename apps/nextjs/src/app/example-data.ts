@@ -78,12 +78,12 @@ export const exampleData: Item[] = [
   },
 ];
 
-export async function getRssData(): Promise<NewsFeed> {
+export async function getRssData(
+  url = "https://www.economist.com/business/rss.xml",
+): Promise<NewsFeed> {
   const parser = new Parser();
 
-  const rssData = await parser.parseURL(
-    "https://www.economist.com/business/rss.xml",
-  );
+  const rssData = await parser.parseURL(url);
 
   return {
     ...rssData,

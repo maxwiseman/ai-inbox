@@ -1,5 +1,6 @@
 export const feeds: FeedSource[] = [
   {
+    id: "nyt",
     title: "New York Times",
     icon: `<svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -231,6 +232,7 @@ export const feeds: FeedSource[] = [
     ],
   },
   {
+    id: "ars",
     title: "Ars Technica",
     icon: `
 <svg id="Ars_Logo" data-name="Ars Logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
@@ -306,6 +308,7 @@ export const feeds: FeedSource[] = [
     ],
   },
   {
+    id: "wsj",
     title: "Wall Street Journal",
     url: "https://www.wsj.com",
     icon: `<svg version="1.1" width="16" height="16" id="WSJ" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 102 59" style="enable-background:new 0 0 102 59;" xml:space="preserve">
@@ -358,6 +361,7 @@ export const feeds: FeedSource[] = [
     ],
   },
   {
+    id: "verge",
     title: "The Verge",
     url: "https://www.theverge.com",
     icon: `<svg width="16" height="16" viewBox="0 0 99 91" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -488,6 +492,7 @@ export const feeds: FeedSource[] = [
     ],
   },
   {
+    id: "economist",
     title: "The Economist",
     url: "https://economist.com",
     icon: `<svg width="16" height="16" id="The_Economist" data-name="The Economist" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.796 81.28">
@@ -593,6 +598,7 @@ export const feeds: FeedSource[] = [
 ];
 
 export interface FeedSource {
+  id: string;
   feeds: (Feed | FeedGroup)[];
   title: string;
   icon: string;
@@ -608,4 +614,15 @@ export interface Feed {
   title: string;
   type?: "feed";
   url: string;
+}
+
+export function getAllFeedsFromSource(feedSource: FeedSource): Feed[] {
+  return feedSource.feeds.flatMap((feed) => {
+    if (feed.type === "feed") {
+      return feed;
+    } else if (feed.type === "feedGroup") {
+      return feed.feeds;
+    }
+    return [];
+  });
 }

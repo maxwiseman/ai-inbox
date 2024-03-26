@@ -30,9 +30,11 @@ export default async function Page({
   const dbData = await db.query.feed.findMany({
     where: inArray(
       feed.id,
-      JSON.parse(
-        decodeURIComponent(searchParams.filter ?? "%5B%222353%22%5D"),
-      ) as string[],
+      searchParams.filter !== "[]"
+        ? (JSON.parse(
+            decodeURIComponent(searchParams.filter ?? "%5B%222353%22%5D"),
+          ) as string[])
+        : ["2353"],
     ),
     with: {
       source: true,

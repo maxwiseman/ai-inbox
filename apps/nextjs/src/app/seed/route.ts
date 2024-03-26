@@ -5,6 +5,14 @@ import { db, feed, source } from "@ai-inbox/db";
 import { feeds, getAllFeedsFromSource } from "../feeds";
 
 export async function GET(): Promise<Response> {
+  const existingSources = await db.query.source.findMany();
+  const existingFeeds = await db.query.feed.findMany();
+  if (existingSources.length > 0 || existingFeeds.length > 0) {
+    return new Response("Database already has data!", {
+      headers: { "content-type": "text/plain" },
+    });
+  }
+
   const sources = feeds.map((feedSource) => ({
     id: randomUUID().substring(0, 4),
     title: feedSource.title,

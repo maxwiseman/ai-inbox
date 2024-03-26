@@ -38,13 +38,25 @@ export default function Layout({
     >
       <ResizablePanel
         className="h-full"
-        defaultSize={dashboardSegment !== "__DEFAULT__" ? 50 : 100}
+        defaultSize={
+          (
+            isMobile
+              ? pathname.startsWith("/details")
+              : dashboardSegment !== "__DEFAULT__"
+          )
+            ? 50
+            : 100
+        }
       >
         <ScrollArea className="absolute h-[calc(100vh-3.5rem)]">
           {children}
         </ScrollArea>
       </ResizablePanel>
-      {dashboardSegment !== "__DEFAULT__" ? (
+      {(
+        isMobile
+          ? pathname.startsWith("/details")
+          : dashboardSegment !== "__DEFAULT__"
+      ) ? (
         <>
           <ResizableHandle withHandle />
           <ResizablePanel minSize={25} collapsible defaultSize={50}>

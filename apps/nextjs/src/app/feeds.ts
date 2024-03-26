@@ -618,8 +618,9 @@ export interface Feed {
 
 export function getAllFeedsFromSource(feedSource: FeedSource): Feed[] {
   return feedSource.feeds.flatMap((feed) => {
-    if (feed.type === "feed") {
+    if (feed.type === "feed" || feed.type === undefined) {
       return feed;
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- ts doesn't like it either way
     } else if (feed.type === "feedGroup") {
       return feed.feeds;
     }

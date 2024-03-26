@@ -37,11 +37,22 @@ export function FilterDialog(): React.ReactElement {
           <span className="hidden sm:inline-block">Filter</span>
         </Button>
       </ResponsiveDialogTrigger>
-      <ResponsiveDialogContent>
+      <ResponsiveDialogContent
+        dialogClassName="max-h-[80vh]"
+        drawerClassName="max-h-[90vh]"
+      >
         {/* <ResponsiveDialogHeader>
           <ResponsiveDialogTitle>Filter Sources</ResponsiveDialogTitle>
         </ResponsiveDialogHeader> */}
-        <FeedSelector selected={selected} onSelectedChange={setSelected} />
+        <div className="relative h-full min-h-[calc(80vh-6.25rem)] w-full">
+          <div className="absolute inset-0">
+            <FeedSelector
+              className="h-full"
+              selected={selected}
+              onSelectedChange={setSelected}
+            />
+          </div>
+        </div>
         <ResponsiveDialogFooter className="flex w-full flex-row flex-nowrap">
           <Button
             className="aspect-square"

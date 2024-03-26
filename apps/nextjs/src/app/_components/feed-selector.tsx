@@ -17,17 +17,22 @@ import { api } from "~/trpc/react";
 export function FeedSelector({
   onSelectedChange,
   selected,
+  className,
+  ...props
 }: {
   selected?: string[];
   onSelectedChange?: Dispatch<SetStateAction<string[]>>;
-}): React.ReactElement {
+} & React.ComponentProps<typeof Command>): React.ReactElement {
   const [defaultSelected, setDefaultSelected] = useState<string[]>([]);
   const sources = api.news.allSources.useQuery({ withFeeds: true });
 
   return (
-    <Command>
+    <Command className={className} {...props}>
       <CommandInput placeholder="Filter Sources..." />
-      <CommandList scrollShadow="bottom">
+      <CommandList
+        className="relative max-h-full min-h-0"
+        scrollShadow="bottom"
+      >
         <CommandEmpty>Nothing found!</CommandEmpty>
         {sources.data?.map((source) => (
           <CommandGroup

@@ -61,11 +61,29 @@ export function ResponsiveDialogTrigger(
 
 export function ResponsiveDialogContent(
   props: React.ComponentProps<typeof DrawerContent> &
-    React.ComponentProps<typeof DialogContent>,
+    React.ComponentProps<typeof DialogContent> & {
+      drawerClassName?: string;
+      dialogClassName?: string;
+    },
 ): React.ReactElement {
   const isDesktop = useMediaQuery("(min-width: 768px)");
-  if (isDesktop) return <DialogContent {...props} />;
-  return <DrawerContent className="min-h-[50vh] px-8" {...props} />;
+  if (isDesktop)
+    return (
+      <DialogContent
+        {...props}
+        className={cn(props.className, props.dialogClassName)}
+      />
+    );
+  return (
+    <DrawerContent
+      {...props}
+      className={cn(
+        "min-h-[50vh] px-8",
+        props.className,
+        props.drawerClassName,
+      )}
+    />
+  );
 }
 
 export function ResponsiveDialogHeader(

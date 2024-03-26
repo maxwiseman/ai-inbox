@@ -21,29 +21,22 @@ export async function GET(): Promise<Response> {
     feeds: feedSource.feeds,
   }));
 
-  await db.insert(source).values(sources).onConflictDoNothing({
-    target: source.id,
-  });
-  await db
-    .insert(feed)
-    .values(
-      sources
-        .flatMap((newsSource) =>
-          getAllFeedsFromSource(newsSource).map((i) => ({
-            ...i,
-            sourceId: newsSource.id,
-          })),
-        )
-        .map((newsFeed) => ({
-          id: randomUUID().substring(0, 4),
-          title: newsFeed.title,
-          url: newsFeed.url,
-          sourceId: newsFeed.sourceId,
+  await db.insert(source).values(sources);
+  await db.insert(feed).values(
+    sources
+      .flatMap((newsSource) =>
+        getAllFeedsFromSource(newsSource).map((i) => ({
+          ...i,
+          sourceId: newsSource.id,
         })),
-    )
-    .onConflictDoNothing({
-      target: feed.id,
-    });
+      )
+      .map((newsFeed) => ({
+        id: randomUUID().substring(0, 4),
+        title: newsFeed.title,
+        url: newsFeed.url,
+        sourceId: newsFeed.sourceId,
+      })),
+  );
 
   return new Response("Database Seeding Finished!", {
     headers: { "content-type": "text/plain" },

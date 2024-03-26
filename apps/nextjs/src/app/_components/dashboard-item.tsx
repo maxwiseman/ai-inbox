@@ -1,8 +1,9 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import { LinkButton } from "@ai-inbox/ui/button";
+import { usePathname, useSearchParams } from "next/navigation";
 import { IconMail, IconNews } from "@tabler/icons-react";
+
+import { LinkButton } from "@ai-inbox/ui/button";
 
 import type { DashboardItem } from "../example-data";
 
@@ -25,10 +26,18 @@ export function DashboardItem({
   }
 
   const pathname = usePathname();
+  const params = useSearchParams();
+  const urlParams: Record<string, string> = {};
+  Array.from(params.entries()).forEach((param) => {
+    urlParams[param[0]] = param[1];
+  });
 
   return (
     <LinkButton
-      href={`/details/${item.details.type}/${item.id}`}
+      href={{
+        pathname: `/details/${item.details.type}/${item.id}`,
+        query: urlParams,
+      }}
       variant={
         pathname.includes(`/details/${item.details.type}/${item.id}`)
           ? "secondary"

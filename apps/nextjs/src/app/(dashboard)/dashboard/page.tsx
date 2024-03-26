@@ -91,66 +91,66 @@ export default async function Page({
   //   },
   // }));
 
-  // switch (searchParams.sort) {
-  //   case undefined: {
-  //     items?.sort((a, b) =>
-  //       // eslint-disable-next-line no-nested-ternary -- its ok
-  //       a.details.type === "news" &&
-  //       b.details.type === "news" &&
-  //       typeof a.details.date === typeof b.details.date
-  //         ? typeof a.details.date === "string" &&
-  //           typeof b.details.date === "string"
-  //           ? b.details.date.localeCompare(a.details.date)
-  //           : 1
-  //         : 1,
-  //     );
-  //     break;
-  //   }
-  //   case "nameAZ": {
-  //     items?.sort((a, b) => a.title.localeCompare(b.title));
-  //     break;
-  //   }
-  //   case "nameZA": {
-  //     items?.sort((a, b) => b.title.localeCompare(a.title));
-  //     break;
-  //   }
-  //   case "dateAZ": {
-  //     items?.sort((a, b) =>
-  //       // eslint-disable-next-line no-nested-ternary -- its ok
-  //       a.details.type === "news" &&
-  //       b.details.type === "news" &&
-  //       typeof a.details.date === typeof b.details.date
-  //         ? typeof a.details.date === "string" &&
-  //           typeof b.details.date === "string"
-  //           ? a.details.date.localeCompare(b.details.date)
-  //           : 1
-  //         : 1,
-  //     );
-  //     break;
-  //   }
-  //   case "dateZA": {
-  //     items?.sort((a, b) =>
-  //       // eslint-disable-next-line no-nested-ternary -- its ok
-  //       a.details.type === "news" &&
-  //       b.details.type === "news" &&
-  //       typeof a.details.date === typeof b.details.date
-  //         ? typeof a.details.date === "string" &&
-  //           typeof b.details.date === "string"
-  //           ? b.details.date.localeCompare(a.details.date)
-  //           : 1
-  //         : 1,
-  //     );
-  //     break;
-  //   }
-  //   case "sourceAZ": {
-  //     items?.sort((a, b) => a.details.type.localeCompare(b.details.type));
-  //     break;
-  //   }
-  //   case "sourceZA": {
-  //     items?.sort((a, b) => b.details.type.localeCompare(a.details.type));
-  //     break;
-  //   }
-  // }
+  switch (searchParams.sort) {
+    case undefined: {
+      items.sort((a, b) =>
+        // eslint-disable-next-line no-nested-ternary -- its ok
+        a.details.type === "news" &&
+        b.details.type === "news" &&
+        typeof a.details.date === typeof b.details.date
+          ? typeof a.details.date === "string" &&
+            typeof b.details.date === "string"
+            ? b.details.date.localeCompare(a.details.date)
+            : 1
+          : 1,
+      );
+      break;
+    }
+    case "nameAZ": {
+      items.sort((a, b) => a.title.localeCompare(b.title));
+      break;
+    }
+    case "nameZA": {
+      items.sort((a, b) => b.title.localeCompare(a.title));
+      break;
+    }
+    case "dateAZ": {
+      items.sort((a, b) =>
+        // eslint-disable-next-line no-nested-ternary -- its ok
+        a.details.type === "news" &&
+        b.details.type === "news" &&
+        typeof a.details.date === typeof b.details.date
+          ? typeof a.details.date === "string" &&
+            typeof b.details.date === "string"
+            ? a.details.date.localeCompare(b.details.date)
+            : 1
+          : 1,
+      );
+      break;
+    }
+    case "dateZA": {
+      items.sort((a, b) =>
+        // eslint-disable-next-line no-nested-ternary -- its ok
+        a.details.type === "news" &&
+        b.details.type === "news" &&
+        typeof a.details.date === typeof b.details.date
+          ? typeof a.details.date === "string" &&
+            typeof b.details.date === "string"
+            ? b.details.date.localeCompare(a.details.date)
+            : 1
+          : 1,
+      );
+      break;
+    }
+    case "sourceAZ": {
+      items.sort((a, b) => a.details.type.localeCompare(b.details.type));
+      break;
+    }
+    case "sourceZA": {
+      items.sort((a, b) => b.details.type.localeCompare(a.details.type));
+      break;
+    }
+  }
 
   return (
     <div className="relative max-w-full p-2 md:p-8">

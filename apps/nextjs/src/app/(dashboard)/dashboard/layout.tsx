@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSelectedLayoutSegment } from "next/navigation";
+import { usePathname, useSelectedLayoutSegment } from "next/navigation";
 
 import {
   ResizableHandle,
@@ -18,6 +18,7 @@ export default function Layout({
   details: React.ReactNode;
 }): React.ReactElement {
   const dashboardSegment = useSelectedLayoutSegment("details");
+  const pathname = usePathname();
 
   // const isMobile = useMediaQuery("(max-width: 640px)");
   const [isMobile, setIsMobile] = useState(false);
@@ -28,7 +29,7 @@ export default function Layout({
     }
   }, []);
 
-  if (isMobile && dashboardSegment !== "__DEFAULT__") return <>{details}</>;
+  if (isMobile && pathname.startsWith("/details")) return <>{details}</>;
 
   return (
     <ResizablePanelGroup

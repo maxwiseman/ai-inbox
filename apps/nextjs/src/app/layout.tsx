@@ -1,9 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Analytics } from "@vercel/analytics/react";
-import { GeistSans } from "geist/font/sans";
-
 import { ThemeProvider } from "@ai-inbox/ui/theme";
 import { Toaster } from "@ai-inbox/ui/toast";
+import { Analytics } from "@vercel/analytics/react";
+import { GeistSans } from "geist/font/sans";
 
 import { env } from "~/env";
 import { TRPCReactProvider } from "~/trpc/react";
@@ -62,7 +61,10 @@ export default async function RootLayout(props: {
       >
         <ServerSessionProvider session={session}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <TRPCReactProvider>{props.children}</TRPCReactProvider>
+            <TRPCReactProvider>
+              {/* eslint-disable-next-line react/no-unknown-property -- this is for vaul */}
+              <main vaul-drawer-wrapper="">{props.children}</main>
+            </TRPCReactProvider>
             <Toaster />
           </ThemeProvider>
         </ServerSessionProvider>

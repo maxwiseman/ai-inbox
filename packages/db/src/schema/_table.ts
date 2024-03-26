@@ -6,4 +6,4 @@ import { sqliteTableCreator } from "drizzle-orm/sqlite-core";
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const sqliteTable = sqliteTableCreator((name) => `ai-inbox_${name}`);
+export const sqliteTable = sqliteTableCreator((name) => name);

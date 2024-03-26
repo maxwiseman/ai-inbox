@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import { useSelectedLayoutSegment } from "next/navigation";
 
 import {
   ResizableHandle,
@@ -17,7 +17,8 @@ export default function Layout({
   children: React.ReactNode;
   details: React.ReactNode;
 }): React.ReactElement {
-  const pathname = usePathname();
+  const dashboardSegment = useSelectedLayoutSegment("details");
+
   // const isMobile = useMediaQuery("(max-width: 640px)");
   const [isMobile, setIsMobile] = useState(false);
 
@@ -27,7 +28,7 @@ export default function Layout({
     }
   }, []);
 
-  if (isMobile && pathname.startsWith("/details")) return <>{details}</>;
+  if (isMobile && dashboardSegment !== "__DEFAULT__") return <>{details}</>;
 
   return (
     <ResizablePanelGroup
@@ -36,13 +37,13 @@ export default function Layout({
     >
       <ResizablePanel
         className="h-full"
-        defaultSize={pathname.startsWith("/details") ? 50 : 100}
+        defaultSize={dashboardSegment !== "__DEFAULT__" ? 50 : 100}
       >
         <ScrollArea className="absolute h-[calc(100vh-3.5rem)]">
           {children}
         </ScrollArea>
       </ResizablePanel>
-      {pathname.startsWith("/details") ? (
+      {dashboardSegment !== "__DEFAULT__" ? (
         <>
           <ResizableHandle withHandle />
           <ResizablePanel minSize={25} collapsible defaultSize={50}>

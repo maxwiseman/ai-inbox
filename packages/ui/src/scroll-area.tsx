@@ -5,12 +5,30 @@ import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 
 import { cn } from ".";
 
+const scrollShadowY = `linear-gradient(#000,#000,transparent 0,#000 10px,#000 calc(100% - 10px),transparent)`;
+const scrollShadowTop = `linear-gradient(#000,#000,transparent 0,#000 10px)`;
+const scrollShadowBottom = `linear-gradient(#000 calc(100% - 10px),transparent)`;
+
 const ScrollArea = React.forwardRef<
   React.ElementRef<typeof ScrollAreaPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root>
->(({ className, children, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.Root> & {
+    scrollShadow?: "top" | "bottom" | "y";
+  }
+>(({ className, scrollShadow, children, ...props }, ref) => (
   <ScrollAreaPrimitive.Root
     className={cn("relative overflow-hidden", className)}
+    style={{
+      maskImage:
+        // eslint-disable-next-line no-nested-ternary -- prettier is good
+        scrollShadow === "bottom"
+          ? scrollShadowBottom
+          : // eslint-disable-next-line no-nested-ternary -- prettier is good
+            scrollShadow === "top"
+            ? scrollShadowTop
+            : scrollShadow === "y"
+              ? scrollShadowY
+              : undefined,
+    }}
     {...props}
   >
     <ScrollAreaPrimitive.Viewport

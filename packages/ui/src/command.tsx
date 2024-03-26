@@ -4,6 +4,7 @@ import type { DialogProps } from "@radix-ui/react-dialog";
 import * as React from "react";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { Command as CommandPrimitive } from "cmdk";
+import { CheckIcon } from "lucide-react";
 
 import { cn } from ".";
 import { Dialog, DialogContent } from "./dialog";
@@ -63,9 +64,12 @@ CommandInput.displayName = CommandPrimitive.Input.displayName;
 
 const CommandList = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.List>,
-  React.ComponentPropsWithoutRef<typeof CommandPrimitive.List>
->(({ className, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.List> & {
+    scrollShadow?: "top" | "bottom" | "y";
+  }
+>(({ className, scrollShadow, ...props }, ref) => (
   <ScrollArea
+    scrollShadow={scrollShadow}
     className={cn(
       "max-h-[300px] overflow-y-auto overflow-x-hidden border-t",
       className,
@@ -134,6 +138,31 @@ const CommandItem = React.forwardRef<
 
 CommandItem.displayName = CommandPrimitive.Item.displayName;
 
+const CommandCheckboxItem = React.forwardRef<
+  React.ElementRef<typeof CommandPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Item> & {
+    checked?: boolean;
+  }
+>(({ className, children, checked, ...props }, ref) => (
+  <CommandPrimitive.Item
+    className={cn(
+      "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 pl-[1.875rem] text-sm outline-none aria-selected:bg-accent aria-selected:text-accent-foreground data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50",
+      className,
+    )}
+    ref={ref}
+    {...props}
+  >
+    {checked ? (
+      <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+        <CheckIcon className="h-4 w-4" />
+      </span>
+    ) : null}
+    {children}
+  </CommandPrimitive.Item>
+));
+
+CommandCheckboxItem.displayName = "CommandCheckboxItem";
+
 function CommandShortcut({
   className,
   ...props
@@ -158,6 +187,7 @@ export {
   CommandEmpty,
   CommandGroup,
   CommandItem,
+  CommandCheckboxItem,
   CommandShortcut,
   CommandSeparator,
 };

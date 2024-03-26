@@ -1,7 +1,9 @@
+/* eslint-disable import/no-cycle -- for drizzle it isn't really a problem */
 import { relations } from "drizzle-orm";
 import { index, int, primaryKey, text } from "drizzle-orm/sqlite-core";
 
 import { sqliteTable } from "./_table";
+import { subscriptions } from "./news";
 
 export const users = sqliteTable("user", {
   id: text("id", { length: 255 }).notNull().primaryKey(),
@@ -15,6 +17,7 @@ export const users = sqliteTable("user", {
 
 export const usersRelations = relations(users, ({ many }) => ({
   accounts: many(accounts),
+  subscriptions: many(subscriptions),
 }));
 
 export const accounts = sqliteTable(

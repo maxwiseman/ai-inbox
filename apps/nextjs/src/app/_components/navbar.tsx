@@ -1,18 +1,19 @@
 "use client";
 
-// import { useEffect } from "react";
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
+import { IconArrowRight } from "@tabler/icons-react";
+
 import { cn } from "@ai-inbox/ui";
 import { Badge } from "@ai-inbox/ui/badge";
 import { LinkButton } from "@ai-inbox/ui/button";
 import { Input } from "@ai-inbox/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@ai-inbox/ui/popover";
-import { IconArrowRight } from "@tabler/icons-react";
 
 import { UserButton } from "./user-button";
 
+// import { useEffect } from "react";
 // import { useSession } from "next-auth/react";
 
 // import { UserButton } from "../_components/ui/user-button";
@@ -20,6 +21,11 @@ import { UserButton } from "./user-button";
 
 export function Navbar(): React.ReactElement {
   const pathname = usePathname();
+  const params = useSearchParams();
+  const urlParams: Record<string, string> = {};
+  Array.from(params.entries()).forEach((item) => {
+    urlParams[item[0]] = item[1];
+  });
   // const router = useRouter();
   // const session = useSession();
 
@@ -50,7 +56,7 @@ export function Navbar(): React.ReactElement {
                 "text-foreground": pathname.startsWith("/dashboard"),
               },
             )}
-            href="/dashboard"
+            href={{ pathname: "/dashboard", query: urlParams }}
           >
             Dashboard
           </Link>
@@ -71,7 +77,10 @@ export function Navbar(): React.ReactElement {
                   placeholder="URL"
                 />
                 <LinkButton
-                  href={`/details/news/${encodeURIComponent(inputUrl)}`}
+                  href={{
+                    pathname: `/details/news/${encodeURIComponent(inputUrl)}`,
+                    query: urlParams,
+                  }}
                   className="aspect-square"
                   size="icon"
                   icon={<IconArrowRight />}

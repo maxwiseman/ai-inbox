@@ -24,7 +24,14 @@ export function FeedSelector({
   onSelectedChange?: Dispatch<SetStateAction<string[]>>;
 } & React.ComponentProps<typeof Command>): React.ReactElement {
   const [defaultSelected, setDefaultSelected] = useState<string[]>([]);
-  const sources = api.news.allSources.useQuery({ withFeeds: true });
+  const sources = api.news.allSources.useQuery(
+    { withFeeds: true },
+    {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      refetchOnReconnect: false,
+    },
+  );
 
   return (
     <Command className={className} {...props}>

@@ -11,12 +11,13 @@ export function DashboardList({
   items: DashboardItemType[];
 }): React.ReactElement {
   const [searchValue] = useQueryState("query");
+  const filteredItems = items.filter((item) =>
+    item.title.toLowerCase().includes((searchValue ?? "").toLowerCase()),
+  );
   return (
     <div className="flex w-full flex-col gap-2">
-      {items.map((item) =>
-        item.title.toLowerCase().includes((searchValue ?? "").toLowerCase()) ? (
-          <DashboardItem key={item.id} item={item} />
-        ) : null,
+      {filteredItems.map((item, index) =>
+        index < 50 ? <DashboardItem key={item.id} item={item} /> : null,
       )}
     </div>
   );

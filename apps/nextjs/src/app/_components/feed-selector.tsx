@@ -70,7 +70,7 @@ export function FeedSelector({
                     );
                 }}
                 key={feed.id}
-                value={`${feed.title} ${feed.id}`}
+                value={`${source.title} ${feed.title} ${feed.id}`}
                 title={feed.title}
               >
                 {feed.title}

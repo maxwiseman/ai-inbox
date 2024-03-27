@@ -47,24 +47,33 @@ export default async function Page({
     }),
   );
 
-  const items: DashboardItemType[] = feeds
-    .flatMap((newsFeed) =>
-      newsFeed.items?.map(
-        (newsItem): DashboardItemType => ({
-          id: newsItem.id,
-          title: newsItem.title ?? "",
-          contentSnippet: newsItem.contentSnippet ?? "",
-          details: {
-            articleUrl: newsItem.link ?? "",
-            date: newsItem.isoDate ?? "",
-            source: newsFeed.title ?? "",
-            type: "news",
-          },
-          icon: "",
-        }),
-      ),
-    )
-    .filter((i): i is DashboardItemType => i !== undefined);
+  const items: DashboardItemType[] = Object.values(
+    feeds
+      .flatMap((newsFeed) =>
+        newsFeed.items?.map(
+          (newsItem): DashboardItemType => ({
+            id: newsItem.id,
+            title: newsItem.title ?? "",
+            contentSnippet: newsItem.contentSnippet ?? "",
+            details: {
+              articleUrl: newsItem.link ?? "",
+              date: newsItem.isoDate ?? "",
+              source: newsFeed.title ?? "",
+              type: "news",
+            },
+            icon: "",
+          }),
+        ),
+      )
+      .reduce<(DashboardItemType | undefined)[]>((acc, curr) => {
+        const existingItem = acc.find((item) => item?.title === curr?.title);
+        if (!existingItem) {
+          acc.push(curr);
+        }
+        return acc;
+      }, [])
+      .filter((item): item is DashboardItemType => item !== undefined),
+  );
 
   // const rssData: NewsFeed = await getRssData(
   //   // eslint-disable-next-line no-nested-ternary -- prettier is good

@@ -120,7 +120,7 @@ const LinkButton = React.forwardRef<HTMLButtonElement, LinkButtonProps>(
         })
       : null;
     return (
-      <Link className={className} href={href} tabIndex={-1} target={target}>
+      <Link href={href} tabIndex={-1} target={target}>
         <Comp
           className={cn("w-full", buttonVariants({ variant, size, className }))}
           ref={ref}

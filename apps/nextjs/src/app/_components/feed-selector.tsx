@@ -11,6 +11,7 @@ import {
   CommandInput,
   CommandList,
 } from "@ai-inbox/ui/command";
+import { Spinner } from "@ai-inbox/ui/spinner";
 
 import { api } from "~/trpc/react";
 
@@ -40,7 +41,16 @@ export function FeedSelector({
         className="relative max-h-full min-h-0"
         scrollShadow="bottom"
       >
-        <CommandEmpty>Nothing found!</CommandEmpty>
+        {sources.isLoading ? (
+          <CommandEmpty className="flex justify-center">
+            <div className="flex items-center gap-2 py-6">
+              <Spinner />
+              Loading...
+            </div>
+          </CommandEmpty>
+        ) : (
+          <CommandEmpty>Nothing found!</CommandEmpty>
+        )}
         {sources.data?.map((source) => (
           <CommandGroup
             key={source.title}

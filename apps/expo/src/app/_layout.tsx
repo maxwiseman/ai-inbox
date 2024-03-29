@@ -20,7 +20,7 @@ export default function RootLayout(): React.ReactElement {
       <Stack
         screenOptions={{
           headerStyle: {
-            backgroundColor: "#f472b6",
+            backgroundColor: "#ffffff",
           },
           contentStyle: {
             backgroundColor: colorScheme === "dark" ? "#09090B" : "#FFFFFF",

@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { IconFilter, IconReload } from "@tabler/icons-react";
 
-import { Button, LinkButton } from "@ai-inbox/ui/button";
+import { Button } from "@ai-inbox/ui/button";
 import {
   ResponsiveDialog,
   ResponsiveDialogClose,
@@ -64,8 +65,7 @@ export function FilterDialog(): React.ReactElement {
             icon={<IconReload />}
           />
           <ResponsiveDialogClose className="grow" asChild>
-            <LinkButton
-              className="w-full grow"
+            <Link
               href={{
                 query: {
                   ...urlParams,
@@ -74,8 +74,8 @@ export function FilterDialog(): React.ReactElement {
                 pathname: "/dashboard",
               }}
             >
-              Save Filters
-            </LinkButton>
+              <Button className="h-full w-full">Save Filters</Button>
+            </Link>
           </ResponsiveDialogClose>
         </ResponsiveDialogFooter>
       </ResponsiveDialogContent>
